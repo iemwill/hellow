@@ -18,6 +18,8 @@ body button:hover {
   color: #11ABB0;
 }
 #ethereumDataMin {
+ min-height: 100%;
+ width: 100%;
  text-align: center;
  position: relative;
  overflow: hidden;
@@ -43,6 +45,8 @@ body button:hover {
 }
 #contact {
  padding-top: 5%;
+ min-height: 100%;
+ width: 100%;
  text-align: center;
  overflow: hidden;
 }
@@ -50,4 +54,12 @@ body button:hover {
   font-size: 50px;
   padding-right: 21px;
   padding-left: 21px;
+}
+
+#contact .donate a {
+  padding-right: 5%;
+  padding-left: 5%;
+  font-size: 28px;
+  color: white;
+  font: sans-serif;
 }
