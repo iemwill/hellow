@@ -44,16 +44,32 @@ body button:hover {
   font-size: 30px;
 }
 #contact {
- padding-top: 5%;
- min-height: 100%;
- width: 100%;
- text-align: center;
- overflow: hidden;
+  padding-top: 5%;
+  min-height: 100%;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
 }
 #contact a {
   font-size: 50px;
   padding-right: 21px;
   padding-left: 21px;
+}
+#c0n74c7 a {
+  font-size: 80%;
+  padding-right: 5%;
+  padding-left: 5%;
+}
+#c0n74c7 .qr {
+  font-size: flex;
+  max-height: 100%;
+  max-width: 100%;
+}
+#bitcoin {
+  color: green;
+}
+#ethereum {
+  color: yellow;
 }
 @media only screen and (max-width: 400px) {
   body button {
@@ -64,22 +80,22 @@ body button:hover {
   }
   #ethereumDataMin h2 {
    font-size: 25px;
- }
- #ethereumDataMin h2 span {
-  font-size: 25px;
-  color: white;
-  background-color: black;
-  border: solid;
-  border-color: #50EFF4;
-}
-#contact {
- padding-top: 20%;
- text-align: center;
- margin-bottom: 3%;
- min-height: 100%;
-}
-#contact h1 {
-  font-size: 20px;
-  color: white;
-}
+  }
+  #ethereumDataMin h2 span {
+   font-size: 25px;
+   color: white;
+   background-color: black;
+   border: solid;
+   border-color: #50EFF4;
+  }
+  #contact {
+   padding-top: 20%;
+   text-align: center;
+   margin-bottom: 3%;
+   min-height: 100%;
+  }
+  #contact h1 {
+    font-size: 20px;
+    color: white;
+  }
 }

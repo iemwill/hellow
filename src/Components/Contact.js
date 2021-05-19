@@ -9,22 +9,32 @@ import {
   FaYoutube,
   FaLinkedin,
 } from 'react-icons/fa';
+import btcqr from "./36NDXbQcRzqDVKBageBcVcjuuCvSnwSYq5...png"
+import ethqr from "./0x7Cbd7A31cF11643b985DaE722bc996A69eDdC5AF.png"
 class Contact extends Component {
   render() {
     return (
       <section id="contact">
         <div className="contact">
-          <a href="https://facebook.com/will.i.em.93"><FaFacebook/></a>
-          <a href="https://wa.me/message/AAIDX7NDPAJ3J1"><FaWhatsapp/></a>
-          <a href="https://instagram.com/iemwill"><FaInstagram/></a>
-          <a href="https://twitter.com/iem_wll"><FaTwitter/></a>
-          <a href="https://github.com/iemwill"><FaGithub/></a>
-          <a href="https://t.me/whatuup"><FaTelegram/></a>
-          <a href="https://youtube.com/channel/UCQS7y3i2NgtnwF9RheO2oeQ"><FaYoutube/></a>
-          <a href="https://linkedin.com/in/w-ll"><FaLinkedin/></a>
-          <br/><br/><br/><br/>bitcoin:36NDXbQcRzqDVKBageBcVcjuuCvSnwSYq5
-          <br/><br/>ethereum:0x7Cbd7A31cF11643b985DaE722bc996A69eDdC5AF
-          <br/><br/>We haven't implemented any cookies nor collecting any data. Thank you for visiting this Application !
+          <br/><br/><br/><br/>
+          <a href="https://facebook.com/will.i.em.93" target="_blank" rel='noreferrer'><FaFacebook/></a>
+          <a href="https://wa.me/message/AAIDX7NDPAJ3J1" target="_blank" rel='noreferrer'><FaWhatsapp/></a>
+          <a href="https://instagram.com/iemwill" target="_blank" rel='noreferrer'><FaInstagram/></a>
+          <a href="https://twitter.com/iem_wll" target="_blank" rel='noreferrer'><FaTwitter/></a>
+          <a href="https://github.com/iemwill" target="_blank" rel='noreferrer'><FaGithub/></a>
+          <a href="https://t.me/whatuup" target="_blank" rel='noreferrer'><FaTelegram/></a>
+          <a href="https://youtube.com/channel/UCQS7y3i2NgtnwF9RheO2oeQ" target="_blank" rel='noreferrer'><FaYoutube/></a>
+          <a href="https://linkedin.com/in/w-ll" target="_blank" rel='noreferrer'><FaLinkedin/></a>
+          <br/><br/><br/><br/>
+        </div>
+        <div id="c0n74c7">
+          <br/><br/><br/><br/><br/><br/>
+          <br/><br/><a id="bitcoin" href="bitcoin:36NDXbQcRzqDVKBageBcVcjuuCvSnwSYq5">bitcoin:36NDXbQcRzqDVKBageBcVcjuuCvSnwSYq5</a>
+          <br/><br/><a id="ethereum" href="ethereum:0x7Cbd7A31cF11643b985DaE722bc996A69eDdC5AF">ethereum:0x7Cbd7A31cF11643b985DaE722bc996A69eDdC5AF</a>
+          <br/><br/><br/><br/><br/><hr/>
+          <br/><br/><img className="qr" src={btcqr} />
+          <br/><br/><br/><br/><img className="qr" src={ethqr} />
+          <br/><br/>We have not implemented any cookies <t>nor collecting any data</t>. Thank you for visiting this Application !
         </div>
   	  </section>
     );
