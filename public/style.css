@@ -17,6 +17,14 @@ body button {
 body button:hover {
   color: #11ABB0;
 }
+#opener {
+  text-align: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+#opener h1 {
+  font-size: 50px;
+}
 #ethereumDataMin {
  min-height: 100%;
  width: 100%;
@@ -75,8 +83,14 @@ body button:hover {
   body button {
     font-size: 25px;
   }
+  #opener {
+    padding-top: 20%;
+  }
+  #opener h2 {
+   font-size: 30px;
+  }
   #ethereumDataMin {
-  	padding-top: 20%;
+    padding-top: 20%;
   }
   #ethereumDataMin h2 {
    font-size: 25px;
@@ -89,7 +103,7 @@ body button:hover {
    border-color: #50EFF4;
   }
   #contact {
-   padding-top: 20%;
+   padding-top: 10%;
    text-align: center;
    margin-bottom: 3%;
    min-height: 100%;

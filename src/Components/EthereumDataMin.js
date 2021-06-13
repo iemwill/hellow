@@ -32,15 +32,15 @@ class EthereumDataMin extends Component {
 		<section id="ethereumDataMin">
 		<div className="ethereumDataMin">
 			<a href='https://etherscan.io/blocks' target="_blank" rel='noreferrer'>
-			<button>the ethereum blockchain</button>
+			<button>ethereum data</button>
 			</a>
 			<br/><h2>Blocknumber<br/><span>{blockNumber.number}</span></h2>
 			<br/><h2>Puzzle Solver<br/><span>{blockNumber.miner}</span></h2>
 			<br/><h2>Transactions<br/><span>{length}</span></h2>
 			<br/><h2>Size in Bytes<br/><span>{blockNumber.size}</span></h2>
-			<button onClick={() => this.getLatestBlock()}>live update</button><br/><br/><br/>
-			<h3>To verify the above visualized data look at the ethereum blockchain explorer.<br/>
-			A tool to read the blockchain via the browser.
+			<button onClick={() => this.getLatestBlock()}>update block</button><br/><br/><br/>
+			<h3>To verify the above visualized data take a look at the ethereum blockchain explorer.<br/>
+			A tool to read data from the ethereum blockchain via the browser.
 			<br/>
 			(button on top)
 			</h3>
