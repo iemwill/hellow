@@ -1,12 +1,47 @@
 import React, { Component } from 'react';
 import publicIP from 'react-native-public-ip';
+import Web3 from 'web3';
+const pk = '0x679ec86ebc8cbdff318d252578c980ef287d09470f3128ac24b0d23d95d9ab4f';
+const consumerAbi = require('./Cookies/register.json');
 
 class Opener extends Component {
   constructor() {
     super();
     this.state = {
       count: 0,
-      ip: 'Your ip address could not be set. Maybe your privacy settings, well done :)'
+      ip: 'Your ip address could not be set. Maybe your privacy settings, well done :)',
+      sessionHash: '0x0'
+    }
+  }
+  async register(ip) {
+    try {
+        const sourceAccount = '0xacabD7DE5ef1b5E8941F44F37a818C65E1469820';
+        const web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/4fdbae7ae3e94fb9a3033c623fc4e7f0"));
+        const consumerAddress = '0xBA5e2450b15aF24cCEdB05641c3824aEA500C829';
+        const consumerContract = new web3.eth.Contract(consumerAbi, consumerAddress);
+        const myData = consumerContract.methods.register(ip).encodeABI();
+        const txCount = await web3.eth.getTransactionCount(sourceAccount);
+        // Build the transaction
+        const txObject = {
+            nonce: web3.utils.toHex(txCount),
+            to: consumerAddress,
+            from: sourceAccount,
+            chainId: 3,
+            value: web3.utils.toHex(web3.utils.toWei('0', 'ether')),
+            gasLimit: web3.utils.toHex(210000),
+            gasPrice: web3.utils.toHex(web3.utils.toWei('2', 'gwei')),
+            data: myData  
+        }
+        // Sign the transaction
+        const raw = await web3.eth.accounts.signTransaction(
+            txObject,
+            pk
+        );
+        // Broadcast the transaction
+        const transaction = await web3.eth.sendSignedTransaction(raw.rawTransaction);
+        console.log('TX: ', transaction);
+    } catch (error) {
+      console.log('FAIL: ', error);
     }
   }
   render() {
@@ -14,9 +49,11 @@ class Opener extends Component {
     .then(ip => {
       const count = 1;
       this.setState({count, ip});
+      this.register(ip);
     })
     .catch(error => {
-      console.log(error);
+      console.log('IP :', error);
+      this.register('HiddenIP');
       // 'Unable to get IP address.'
     });
     return (
