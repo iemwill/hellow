@@ -23,10 +23,7 @@ class Contact extends Component {
           <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
           <br/><br/><a id="bitcoin" href="bitcoin:bc1qmupy24nxjr822smvq8a2x33vd5tc6dth56p897">bc1qmupy24nxjr822smvq8a2x33vd5tc6dth56p897</a>
           <br/><br/><a id="ethereum" href="ethereum:0x7Cbd7A31cF11643b985DaE722bc996A69eDdC5AF">0x7Cbd7A31cF11643b985DaE722bc996A69eDdC5AF</a>
-          <br/><hr/>We have not implemented any cookies nor collecting any data, except your ip-address. 
-          Take a look at the following link(https://ropsten.etherscan.io/address/0xba5e2450b15af24ccedb05641c3824aea500c829), where every user registers via a smart contract on the Ethereum Blockchain.
-
-          Thank you for visiting this Application !
+          <br/><hr/>We have not implemented any cookies nor collecting any data, except your ip-address. Thank you for visiting this Application !
         </div>
   	  </section>
     );

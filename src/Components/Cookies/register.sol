@@ -1,4 +1,4 @@
-pragma solidity >=0.8.0;
+pragma solidity >=0.8.0 <0.9.0;
 /**
  * The websiteRegestry contract is a small piece of codelines to
  * register machines calling a servers hosted code of so called websites..
@@ -11,12 +11,14 @@ contract websiteRegestry {
 		require (_registrator == inputAddress); 
 		_; 
 	}
+	event Registration(string text, uint256 date);	
   	constructor() {
     	_registrator = msg.sender;
   	}
   	function register (string calldata ip) public allowance(msg.sender) returns(bool) {
   	    uint256 input = block.timestamp;
   		MainVisits[ip].push(input);
+  		emit Registration(ip, input);
   		return true;
   	}
   	function getVisits (string calldata ip) public view returns(uint256[] memory) {

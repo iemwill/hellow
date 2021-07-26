@@ -10,14 +10,13 @@ class Opener extends Component {
     this.state = {
       count: 0,
       ip: 'Your ip address could not be set. Maybe your privacy settings, well done :)',
-      sessionHash: '0x0'
     }
   }
   async register(ip) {
     try {
         const sourceAccount = '0xacabD7DE5ef1b5E8941F44F37a818C65E1469820';
         const web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/4fdbae7ae3e94fb9a3033c623fc4e7f0"));
-        const consumerAddress = '0xBA5e2450b15aF24cCEdB05641c3824aEA500C829';
+        const consumerAddress = '0xaa2c7cca2774a114ae7bffa24832948d77b916cd';
         const consumerContract = new web3.eth.Contract(consumerAbi, consumerAddress);
         const myData = consumerContract.methods.register(ip).encodeABI();
         const txCount = await web3.eth.getTransactionCount(sourceAccount);
@@ -59,7 +58,7 @@ class Opener extends Component {
     return (
       <section id="opener">
         <div className="opener">
-        <h3>{this.state.ip}</h3>
+        <h3>{this.state.ip}<br/>Your visit was registered at the Ethereum Blockchain <a href="https://ropsten.etherscan.io/address/0xba5e2450b15af24ccedb05641c3824aea500c829">Ropsten.</a></h3>
         <br/><br/>
         <h1>
         Bitcoin is here to free the people. from corruption, fraud, backdoor agreements, ec. <br/><br/>
