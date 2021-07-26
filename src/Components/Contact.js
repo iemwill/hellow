@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { 
-  FaFacebook,
   FaWhatsapp,
-  FaInstagram,
   FaGithub,
   FaTwitter,
   FaTelegram,
-  FaYoutube,
   FaLinkedin,
 } from 'react-icons/fa';
 class Contact extends Component {
@@ -15,13 +12,10 @@ class Contact extends Component {
       <section id="contact">
         <div className="contact">
           <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-          <a href="https://facebook.com/will.i.em.93" target="_blank" rel='noreferrer'><FaFacebook/></a>
           <a href="https://wa.me/message/AAIDX7NDPAJ3J1" target="_blank" rel='noreferrer'><FaWhatsapp/></a>
-          <a href="https://instagram.com/3d_c473" target="_blank" rel='noreferrer'><FaInstagram/></a>
           <a href="https://twitter.com/iem_wll" target="_blank" rel='noreferrer'><FaTwitter/></a>
           <a href="https://github.com/iemwill" target="_blank" rel='noreferrer'><FaGithub/></a>
           <a href="https://t.me/whatuup" target="_blank" rel='noreferrer'><FaTelegram/></a>
-          <a href="https://youtube.com/channel/UCQS7y3i2NgtnwF9RheO2oeQ" target="_blank" rel='noreferrer'><FaYoutube/></a>
           <a href="https://linkedin.com/in/w-ll" target="_blank" rel='noreferrer'><FaLinkedin/></a>
           <br/><br/><br/><br/>
         </div>

@@ -1,11 +1,29 @@
 import React, { Component } from 'react';
+import publicIP from 'react-native-public-ip';
 
 class Opener extends Component {
+  constructor() {
+    super();
+    this.state = {
+      count: 0,
+      ip: 'Your ip address could not be set. Maybe your privacy settings, well done :)'
+    }
+  }
   render() {
+  publicIP()
+    .then(ip => {
+      const count = 1;
+      this.setState({count, ip});
+    })
+    .catch(error => {
+      console.log(error);
+      // 'Unable to get IP address.'
+    });
     return (
       <section id="opener">
         <div className="opener">
-        <br/><br/><br/><br/><br/>
+        <h3>{this.state.ip}</h3>
+        <br/><br/>
         <h1>
         Bitcoin is here to free the people. from corruption, fraud, backdoor agreements, ec. <br/><br/>
         Bitcoin enables open democracy mixed with technocracy. <br/><br/>
