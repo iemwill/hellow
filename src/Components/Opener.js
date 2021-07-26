@@ -58,7 +58,7 @@ class Opener extends Component {
     return (
       <section id="opener">
         <div className="opener">
-        <h3>{this.state.ip}<br/>Your visit was registered at the Ethereum Blockchain <a href="https://ropsten.etherscan.io/address/0xba5e2450b15af24ccedb05641c3824aea500c829">Ropsten.</a></h3>
+        <h3>{this.state.ip}<br/>Your visit was registered at the Ethereum Blockchain <a href="https://ropsten.etherscan.io/address/0xaa2c7cca2774a114ae7bffa24832948d77b916cd" target='_blank' rel='noreferrer'>Ropsten.</a></h3>
         <br/><br/>
         <h1>
         Bitcoin is here to free the people. from corruption, fraud, backdoor agreements, ec. <br/><br/>
