@@ -1,77 +1,81 @@
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
-
-/**
- * The Cookies contract saves some minimal usage data from the website https://laubenheimer.eu
- */
-
 contract Cookies {
-	struct Action {
-		string actor;
-		uint buttonID;
-        uint timestamp;
-	}
-	struct Session {
+    /**
+     * The Cookies contract is a small piece of codelines to
+     * register actions through machines calling a servers hosted code of so called websites.. .or
+     * any other fitting need.
+     * 
+     * Contact the dev of this Contract and it's using code on https://laubenheimer.eu via that site.
+     */
+    struct Session {
         string ip;
         uint timestampStart;
         uint timestampLastAction;
-        Action[] actions;
+        uint[21] actions;
     }
     
-    address payable private owner;
-    string[] private visitors;
-    mapping (string => Session[]) private sessions;
+    address payable public owner;
+    mapping(string => uint[]) public visitors;
+    Session[] public sessions;
+
+    modifier isOwner() { 
+        require(owner == address(msg.sender));
+        _;
+    }
 
     event Activity(string description);
+    event Activity(string description, uint buttonID);
     
-    //@notice Contract-initiation, setting the owner//
-    constructor(address deployAddress) public {
-        require (msg.sender == address(deployAddress),
-         "Someone may have tried to cheat somehow to become owner, or check the Address again.");
-    	owner = msg.sender;
-        emit Activity("Initialisation of this Cookiecontract by: " + string(owner));
+    //@notice Contract-initialization, setting the owner//
+    constructor() {
+        require(owner == address(msg.sender));
+        emit Activity("Initialisation of this Cookiecontract.");
+    }
+    
+    receive () external payable {
+        require(msg.value > 0);
+        emit Activity("ETH-Donation received.");
     }
 
-    //@notice Here the contract owner can add actions, registered made on the web-Application.
-    function action(string ip, uint buttonID) public returns(bool){
-        require(msg.sender == owner,
-            "Not transacted via the website.");
-        bool success = _action(ip, buttonID);
-        return success;
+    function emptyTocket () external isOwner() {
+        uint _amount = address(this).balance;
+        require(_amount > 0);
+        require(owner.send(_amount));
+        emit Activity("Cleared ETH-Amount to owner.");
     }
-    function _action (string ip, uint buttonID) returns(bool) internal {
-        _timestamp = time.now;
-        Action actionToAdd = Action(ip, buttonID, _timestamp);
-        if(buttonID == 0){
-            Action[] toAdd;
-            toAdd.push(actionToAdd);
-            Session stoAdd = Session(ip, _timestamp, _timestamp, toAdd);
-            sessions[ip].push(stoAdd);
-            emit Activity("New session intialized.");
-        } else {
-            sessions[ip].actions.push(Action(ip, buttonID, _timestamp));
-            sessions[ip].timestampLastAction = _timestamp;
-            emit Activity("Button pushed.");
-        }
+    
+    function initSession (string calldata ip) external isOwner() returns(uint) {
+        visitors[ip][visitors[ip].length] = sessions.length;
+        uint  _timestamp = block.timestamp;
+        uint[21] memory _actions;
+        _actions[0] = 0;
+        sessions.push(Session(ip, _timestamp, _timestamp, _actions));
+        emit Activity("Init new session.");
+        return sessions.length - 1;
+    }
+    
+
+    //@notice Here the contract contract-owner can add actions made on the web-Application.
+    function webAppAction (string memory ip, uint buttonID, uint sessionID) external isOwner() returns(bool) {
+        require(keccak256(bytes(sessions[sessionID].ip)) == keccak256(bytes(ip)));
+        sessions[sessionID].actions[sessions[sessionID].actions.length] = buttonID;
+        sessions[sessionID].timestampLastAction = block.timestamp;
+        emit Activity("Button activated, ID: " , buttonID);
         return true;
     }
     
     //@notice These calls can be used to read the collected data in this contract.
     function getOwner() public view returns(address) {
-        return _getOwner();
-    }
-    function _getOwner() private internal returns(address) {
         return owner;
-    }    
-    function getVisitor(uint visitorNumber) public view returns(string ip) {
-        return _getVisitor();
     }
-    function _getVisitor(uint visitorNumber) private internal returns(string ip) {
-        return visitors[visitorNumber];
+    function getVisitorCounter() public view returns(uint) {
+        return sessions.length;
     }
-    function getSession (uint number) public view returns(Session) {
-        return _getSession(number);
+    function getRegisteredVisitsFrom(string calldata ip) public view returns(uint[] memory) {
+        return visitors[ip];
     }
-    function _getSession (uint number) private internal returns(Session) {
-        return sessions[number];
+    function getSession (uint ID) public view returns(Session memory) {
+        return sessions[ID];
     }    
 }

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import addWebAppAction from './Cookies/addWebAppAction';
 import { 
-  FaWhatsapp,
-  FaGithub,
-  FaTwitter,
-  FaTelegram,
   FaLinkedin,
+  FaGithub,
+  FaTelegram,
+  FaTwitter,
+  FaWhatsapp,
 } from 'react-icons/fa';
 class Contact extends Component {
   render() {
