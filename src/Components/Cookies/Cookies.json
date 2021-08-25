@@ -1,0 +1,250 @@
+[
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "description",
+				"type": "string"
+			}
+		],
+		"name": "Activity",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "string",
+				"name": "description",
+				"type": "string"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "buttonID",
+				"type": "uint256"
+			}
+		],
+		"name": "Activity",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "emptyTocket",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getOwner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "ip",
+				"type": "string"
+			}
+		],
+		"name": "getRegisteredVisitsFrom",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "ID",
+				"type": "uint256"
+			}
+		],
+		"name": "getSession",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "ip",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestampStart",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestampLastAction",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "actions",
+						"type": "uint256[]"
+					}
+				],
+				"internalType": "struct Cookies.Session",
+				"name": "",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getVisitorCounter",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "ip",
+				"type": "string"
+			}
+		],
+		"name": "initSession",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"internalType": "address payable",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "sessions",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "ip",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "timestampStart",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "timestampLastAction",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "visitors",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "ip",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "buttonID",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "sessionID",
+				"type": "uint256"
+			}
+		],
+		"name": "webAppAction",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "receive"
+	}
+]

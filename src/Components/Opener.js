@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
 import addWebAppAction from './Cookies/addWebAppAction';
 class Opener extends Component {
-  render() {  
+  constructor() {
+    super();
+  }
+  _addWebAppAction (buttonID) {
+    if (this.props.count == 2) {
+      addWebAppAction('HiddenIP', buttonID, this.props.sessionID);
+    } else {
+      addWebAppAction(this.props.ip, buttonID, this.props.sessionID);      
+    }
+  }
+  render() {
     return (
       <section id="opener">
         <div className="opener">
-          <h3>{this.props.ip}<br/>Your visit was registered at the Ethereum Blockchain <a href="https://ropsten.etherscan.io/address/0x91B245abbDC633A0A7dDC25316476e176D42DCc0" target='_blank' rel='noreferrer'>Ropsten.</a></h3>
+          <h3>{this.props.ip}<br/>Your visit was registered at the Ethereum Blockchain 
+          <a href="https://ropsten.etherscan.io/address/0xa5ed244d0f294d920376994f6035d6f405888d31" 
+            target='_blank' rel='noreferrer' onClick={() => this._addWebAppAction(1)} > Ropsten.
+          </a></h3>
           <br/><br/>
           <h1>
           Bitcoin is here to free the people. from corruption, fraud, backdoor agreements, ec. <br/><br/>

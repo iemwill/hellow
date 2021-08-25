@@ -23,6 +23,15 @@ class EthereumDataMin extends Component {
   			console.log('FAILED TO LOAD BLOCK: ', error);
   		}
 	}
+  	_addWebAppAction (buttonID) {
+	    if (this.props.count == 2) {
+	    	this.getLatestBlock();
+	        addWebAppAction('HiddenIP', buttonID, this.props.sessionID);
+	    } else {
+	    	this.getLatestBlock();
+	      	addWebAppAction(this.props.ip, buttonID, this.props.sessionID);      
+	    }
+	}
 	render() {
 		if (this.state.count == 0) {
 			this.getLatestBlock();
@@ -32,14 +41,14 @@ class EthereumDataMin extends Component {
 	return (
 		<section id="ethereumDataMin">
 			<div className="ethereumDataMin">
-				<a href='https://etherscan.io/blocks' target="_blank" rel='noreferrer'>
+				<a href='https://etherscan.io/blocks' target="_blank" rel='noreferrer' onClick={() => this._addWebAppAction(2)}>
 				<button>ethereum data</button>
 				</a>
 				<br/><h2>Blocknumber<br/><span>{blockNumber.number}</span></h2>
 				<br/><h2>Puzzle Solver<br/><span>{blockNumber.miner}</span></h2>
 				<br/><h2>Transactions<br/><span>{length}</span></h2>
 				<br/><h2>Size in Bytes<br/><span>{blockNumber.size}</span></h2>
-				<button onClick={() => this.getLatestBlock()}>update block</button><br/><br/><br/>
+				<button onClick={() => this._addWebAppAction(3)}>update block</button><br/><br/><br/>
 				<h3>To verify the above visualized data take a look at the ethereum blockchain explorer.<br/>
 				A tool to read data from the ethereum blockchain via the browser.
 				<br/>

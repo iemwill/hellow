@@ -12,24 +12,25 @@ contract Cookies {
         string ip;
         uint timestampStart;
         uint timestampLastAction;
-        uint[21] actions;
+        uint[] actions;
     }
-    
-    address payable public owner;
-    mapping(string => uint[]) public visitors;
-    Session[] public sessions;
 
     modifier isOwner() { 
-        require(owner == address(msg.sender));
+        require(owner == payable(address(msg.sender)), "You're not the owner.");
         _;
     }
 
     event Activity(string description);
     event Activity(string description, uint buttonID);
     
+    address payable public owner;
+    mapping(string => uint[]) public visitors;
+    Session[] public sessions;
+    uint[] private actions;
     //@notice Contract-initialization, setting the owner//
     constructor() {
-        require(owner == address(msg.sender));
+        owner = payable(address(msg.sender));
+        actions.push(0);
         emit Activity("Initialisation of this Cookiecontract.");
     }
     
@@ -45,23 +46,21 @@ contract Cookies {
         emit Activity("Cleared ETH-Amount to owner.");
     }
     
-    function initSession (string calldata ip) external isOwner() returns(uint) {
-        visitors[ip][visitors[ip].length] = sessions.length;
+    function initSession (string memory ip) external isOwner() returns(uint) {
+        visitors[ip].push(sessions.length);
         uint  _timestamp = block.timestamp;
-        uint[21] memory _actions;
-        _actions[0] = 0;
-        sessions.push(Session(ip, _timestamp, _timestamp, _actions));
-        emit Activity("Init new session.");
+        Session memory newSession = Session(ip, _timestamp, _timestamp, actions);
+        sessions.push(newSession);
+        emit Activity("Init new session, sessionID: ", sessions.length - 1);
         return sessions.length - 1;
     }
     
-
     //@notice Here the contract contract-owner can add actions made on the web-Application.
     function webAppAction (string memory ip, uint buttonID, uint sessionID) external isOwner() returns(bool) {
-        require(keccak256(bytes(sessions[sessionID].ip)) == keccak256(bytes(ip)));
-        sessions[sessionID].actions[sessions[sessionID].actions.length] = buttonID;
+        require(keccak256(bytes(sessions[sessionID].ip)) == keccak256(bytes(ip)), "Wrong Credentials.. ");
+        sessions[sessionID].actions.push(buttonID);
         sessions[sessionID].timestampLastAction = block.timestamp;
-        emit Activity("Button activated, ID: " , buttonID);
+        emit Activity("Button activated, buttonID: " , buttonID);
         return true;
     }
     
