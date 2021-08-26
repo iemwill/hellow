@@ -16,7 +16,7 @@ class Opener extends Component {
       <section id="opener">
         <div className="opener">
           <h3>{this.props.ip}<br/>Your visit was registered at the Ethereum Blockchain 
-          <a href="https://ropsten.etherscan.io/address/0x1C31BBd3C4d72f31986B0291313676647BBBfB12" 
+          <a href="https://ropsten.etherscan.io/address/0xd2cf9f677f361f23c576825978338c4a21291646" 
             target='_blank' rel='noreferrer' onClick={() => this._addWebAppAction(1)} > Ropsten.
           </a></h3>
           <br/><br/>

@@ -23,7 +23,7 @@ constructor() {
           const web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/4fdbae7ae3e94fb9a3033c623fc4e7f0"));
           const contractAddress = '0xd2cf9f677f361f23c576825978338c4a21291646';
           const cookieContract = new web3.eth.Contract(cookieAbi, contractAddress);
-          const myData = cookieContract.methods.initSession(ip).encodeABI();
+          const myData = cookieContract.methods.initSession(ip.slice(0,7)).encodeABI();
           const txCount = await web3.eth.getTransactionCount(sourceAccount);
           const networkId = await web3.eth.net.getId();
           // Build the transaction
@@ -34,7 +34,7 @@ constructor() {
               chainId: networkId,
               value: web3.utils.toHex(web3.utils.toWei('0', 'ether')),
               gasLimit: web3.utils.toHex(210000),
-              gasPrice: web3.utils.toHex(web3.utils.toWei('2', 'gwei')),
+              gasPrice: web3.utils.toHex(web3.utils.toWei('10', 'gwei')),
               data: myData  
           };
           // Sign the transaction
@@ -64,7 +64,7 @@ constructor() {
         })
         .catch(error => {
           if (this.state.count != 2) {
-            const sessionID = this.initSession('HiddenIP');
+            this.initSession('HiddenIP');
             const count = 2;
             this.setState({count});
             console.log('IP-error :', error);
