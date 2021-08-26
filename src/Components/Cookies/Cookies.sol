@@ -21,7 +21,7 @@ contract Cookies {
     }
 
     event Activity(string description);
-    event Activity(string description, uint buttonID);
+    event Activity(string description, uint ID);
     
     address payable public owner;
     mapping(string => uint[]) public visitors;

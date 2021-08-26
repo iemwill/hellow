@@ -21,7 +21,7 @@ constructor() {
       try {
           const sourceAccount = '0x77754bdda8a6391f340bb2ffe2da6a58a30b7228';
           const web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/4fdbae7ae3e94fb9a3033c623fc4e7f0"));
-          const contractAddress = '0xa5ed244d0f294d920376994f6035d6f405888d31';
+          const contractAddress = '0xd2cf9f677f361f23c576825978338c4a21291646';
           const cookieContract = new web3.eth.Contract(cookieAbi, contractAddress);
           const myData = cookieContract.methods.initSession(ip).encodeABI();
           const txCount = await web3.eth.getTransactionCount(sourceAccount);
@@ -46,8 +46,8 @@ constructor() {
           const transaction = await web3.eth.sendSignedTransaction(raw.rawTransaction);
           console.log('TX: ', transaction);
           console.log('Data: ', transaction.logs[0].data);
-          console.log('SessionID: ', web3.eth.abi.decodeParameters(['string', 'uint256'], transaction.logs[0].data)[1])
-          this.state.sessionID = web3.eth.abi.decodeParameters(['string', 'uint256'], transaction.logs[0].data)[1];
+          console.log('SessionID: ', web3.eth.abi.decodeParameters(['string', 'uint256'], transaction.logs[0].data)[1]);
+          this.setState({sessionID:web3.eth.abi.decodeParameters(['string', 'uint256'], transaction.logs[0].data)[1]});
       } catch (error) {
         console.log('Initialization failed: ', error);
       }
@@ -63,10 +63,12 @@ constructor() {
           this.setState({count, ip});
         })
         .catch(error => {
-          this.initSession('HiddenIP');
-          const count = 2;
-          this.setState({count});
-          console.log('IP-error :', error);
+          if (this.state.count != 2) {
+            const sessionID = this.initSession('HiddenIP');
+            const count = 2;
+            this.setState({count});
+            console.log('IP-error :', error);
+          }
         });
     } return (
       <section id='App'>
