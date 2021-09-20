@@ -81,21 +81,23 @@ body button:hover {
 #ethereum {
   color: yellow;
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 1000px) {
   body button {
-    font-size: 25px;
+   font-size: 99px;
   }
-  #opener {
-    padding-top: 20%;
+  #opener h1 {
+    padding-top: 21px;
+    font-size: px;
   }
   #opener h2 {
-   font-size: 30px;
+   font-size: 50px;
+   padding-top: 15px;
   }
   #ethereumDataMin {
-    padding-top: 20%;
+    padding-top: 5%;
   }
   #ethereumDataMin h2 {
-   font-size: 25px;
+   font-size: 50px;
   }
   #ethereumDataMin h2 span {
    font-size: 25px;
