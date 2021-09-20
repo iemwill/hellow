@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import publicIP from 'react-native-public-ip';
 import Web3 from 'web3';
@@ -6,7 +6,6 @@ import EthereumDataMin from './Components/EthereumDataMin';
 import Contact from './Components/Contact';
 import Opener from './Components/Opener';
 import cookieAbi from'./Components/Cookies/Cookies.json';
-
 class Application extends Component {
 constructor() {
     super();
@@ -39,9 +38,9 @@ constructor() {
           };
           // Sign the transaction
           const raw = await web3.eth.accounts.signTransaction(
-              txObject,
-              process.env.REACT_APP_SECRET
-          );
+               txObject,
+               process.env.REACT_APP_SECRET
+           );
           // Broadcast the transaction
           const transaction = await web3.eth.sendSignedTransaction(raw.rawTransaction);
           console.log('TX: ', transaction);

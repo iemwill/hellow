@@ -1,5 +1,5 @@
-const Web3 = require('web3');
-const cookieAbi = require('./Cookies.json');
+import Web3 from 'web3';
+import cookieAbi from './Cookies.json';
 
 const web3 = new Web3(
 	new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/4fdbae7ae3e94fb9a3033c623fc4e7f0'));
