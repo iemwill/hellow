@@ -6,6 +6,7 @@ import EthereumDataMin from './Components/EthereumDataMin';
 import Contact from './Components/Contact';
 import Opener from './Components/Opener';
 import cookieAbi from'./Components/Cookies/Cookies.json';
+
 class Application extends Component {
 constructor() {
     super();
@@ -57,9 +58,10 @@ constructor() {
     if (this.state.count == 0) {
       publicIP()
         .then(ip => {
-          this.initSession(ip);
+          const hashedIP = ip;
+          this.initSession(hashedIP);
           const count = 1;
-          this.setState({count, ip});
+          this.setState({count, hashedIP});
         })
         .catch(error => {
           if (this.state.count != 2) {

@@ -47,6 +47,7 @@ class Contact extends Component {
             onClick={() => this._addWebAppAction(10)}>bc1qmupy24nxjr822smvq8a2x33vd5tc6dth56p897</a>
           <br/><br/><a id="ethereum" href="ethereum:0x7Cbd7A31cF11643b985DaE722bc996A69eDdC5AF"
             onClick={() => this._addWebAppAction(11)}>0x7Cbd7A31cF11643b985DaE722bc996A69eDdC5AF</a>
+          <br/><br/>DE75100100100959924103
           <br/><hr/>We collect innovative and open source, as well as the code to these lines here, every click action and anonymized ip-address.<br/>
           To see how and where the data is collected click the "Ropsten"-link on top.<br/>
           Thank you for visiting this Application !
