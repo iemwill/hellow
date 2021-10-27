@@ -1,0 +1,17 @@
+======= BaseToken.sol:BaseToken =======
+Gas estimation:
+construction:
+   infinite + 427800 = infinite
+external:
+   BaseTokenCurrentSupply():  2317
+   BaseTokenMapping(address): 2633
+   BaseTokenMaximumSupply():  2384
+   BaseTokenOwner(): 2404
+   BaseTokenStatus():   2361
+   Decimals(): 2383
+   Name():  infinite
+   Symbol():   infinite
+   exchangeETHBase():   infinite
+   sendBaseTokenA(address,uint256): 53381
+   sendBaseTokenB(address,uint256): 53316
+   sendETH(uint256): infinite

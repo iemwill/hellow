@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import addWebAppAction from './Cookies/addWebAppAction';
+import addWebAppAction from '../Backend/Cookies/addWebAppAction';
 import { 
   FaLinkedin,
   FaGithub,
@@ -48,7 +48,13 @@ class Contact extends Component {
           <br/><br/><a id="ethereum" href="ethereum:0x7Cbd7A31cF11643b985DaE722bc996A69eDdC5AF"
             onClick={() => this._addWebAppAction(11)}>0x7Cbd7A31cF11643b985DaE722bc996A69eDdC5AF</a>
           <br/><br/>DE75100100100959924103
-          <br/><hr/>We collect innovative and open source, as well as the code to these lines here, every click action and anonymized ip-address.<br/>
+          <br/><br/>
+          <hr/><br/>Testnet-Token: <a href="https://ropsten.etherscan.io/address/0xFe230ee0C3D613d540c7BFd8465646c81FfBB842" target="_blank" rel="noreferrer"
+            onClick={() => this._addWebAppAction(12)}>0xFe230ee0C3D613d540c7BFd8465646c81FfBB842</a> on Ropsten
+          <br/><br/>NFT-Register: <a href="https://ropsten.etherscan.io/address/0x1CE8ac1E22DAf01406F2AdBaB87CF94516d068Eb" target="_blank" rel="noreferrer"
+            onClick={() => this._addWebAppAction(13)}>0x1CE8ac1E22DAf01406F2AdBaB87CF94516d068Eb</a> on Ropsten
+          <br/><br/>
+          <hr/><br/>We collect innovative and open source, as well as the code to these lines here, every click action and anonymized ip-address.<br/>
           To see how and where the data is collected click the "Ropsten"-link on top.<br/>
           Thank you for visiting this Application !
         </div>

@@ -2,11 +2,10 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import publicIP from 'react-native-public-ip';
 import Web3 from 'web3';
-import EthereumDataMin from './Components/EthereumDataMin';
-import Contact from './Components/Contact';
-import Opener from './Components/Opener';
-import cookieAbi from'./Components/Cookies/Cookies.json';
-
+import EthereumDataMin from './Components/Frontend/EthereumDataMin';
+import Contact from './Components/Frontend/Contact';
+import Opener from './Components/Frontend/Opener';
+import cookieAbi from'./Components/Backend/Cookies/Cookies.json';
 class Application extends Component {
 constructor() {
     super();
@@ -18,7 +17,7 @@ constructor() {
   }
   async initSession(ip) {
     if (this.state.count == 0) {
-      try {
+      try {          
           const sourceAccount = '0x77754bdda8a6391f340bb2ffe2da6a58a30b7228';
           const web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/4fdbae7ae3e94fb9a3033c623fc4e7f0"));
           const contractAddress = '0xd2cf9f677f361f23c576825978338c4a21291646';
@@ -54,7 +53,7 @@ constructor() {
     }
   }
   render() {
-    //Get IP and register at a smart contract
+    //Get IP and register at a smart contract;;;CONSTANTS.HashAlgorithms.sha256(ip);
     if (this.state.count == 0) {
       publicIP()
         .then(ip => {

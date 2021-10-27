@@ -1,26 +1,22 @@
 import Web3 from 'web3';
-import cookieAbi from './Cookies.json';
 
-const web3 = new Web3(
-	new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/4fdbae7ae3e94fb9a3033c623fc4e7f0'));
-
-async function addWebAppAction(ip, buttonID, sessionID) {
+async function contractDeploy(abi, bin, inputData) {
 	try {
+		//if (window.ethereum.enable) {...}
+		//      else {}
 		const sourceAccount = '0x77754bdda8a6391f340bb2ffe2da6a58a30b7228';
 		const web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/4fdbae7ae3e94fb9a3033c623fc4e7f0"));
-		const contractAddress = '0xd2cf9f677f361f23c576825978338c4a21291646';
-		const cookieContract = new web3.eth.Contract(cookieAbi, contractAddress);
-		const myData = cookieContract.methods.webAppAction(ip.slice(0,7), web3.utils.toHex(buttonID), web3.utils.toHex(sessionID)).encodeABI();
+		const loadedContract = new web3.eth.Contract(abi);
+		const myData = loadedContract.deploy({data: bin, arguments: inputData}).encodeABI();
 		const txCount = await web3.eth.getTransactionCount(sourceAccount);
 		const networkId = await web3.eth.net.getId();
         // Build the transaction
         const txObject = {
           	nonce: web3.utils.toHex(txCount),
-          	to: contractAddress,
           	from: sourceAccount,
           	chainId: networkId,
           	value: web3.utils.toHex(web3.utils.toWei('0', 'ether')),
-          	gasLimit: web3.utils.toHex(100000),
+          	gasLimit: web3.utils.toHex(1000000),
           	gasPrice: web3.utils.toHex(web3.utils.toWei('5', 'gwei')),
           	data: myData  
         };
@@ -33,8 +29,8 @@ async function addWebAppAction(ip, buttonID, sessionID) {
         const transaction = await web3.eth.sendSignedTransaction(raw.rawTransaction);
         console.log('TX: ', transaction);
     } catch (error) {
-      	console.log('Add Action failed: ', error);
+      	console.log('Deployment failed: ', error);
     }
 }
 
-export default addWebAppAction;
+export default contractDeploy;

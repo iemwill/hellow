@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import addWebAppAction from './Cookies/addWebAppAction';
+import addWebAppAction from '../Backend/Cookies/addWebAppAction';
 const Web3 = require('web3');
 class EthereumDataMin extends Component {
 	constructor() {

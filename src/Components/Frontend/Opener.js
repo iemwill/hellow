@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Contact from './Contact';
-import addWebAppAction from './Cookies/addWebAppAction';
+import addWebAppAction from '../Backend/Cookies/addWebAppAction';
 class Opener extends Component {
   constructor() {
     super();
