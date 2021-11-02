@@ -57,10 +57,9 @@ constructor() {
     if (this.state.count == 0) {
       publicIP()
         .then(ip => {
-          const hashedIP = ip;
-          this.initSession(hashedIP);
+          this.initSession(ip);
           const count = 1;
-          this.setState({count, hashedIP});
+          this.setState({count, ip});
         })
         .catch(error => {
           if (this.state.count != 2) {

@@ -1,7 +1,7 @@
 import abi from './Components/Backend/BaseToken/BaseTokenAbi.js';
 import bin from './Components/Backend/BaseToken/BaseTokenBin.js';
 import contractDeploy from './Components/Backend/deploy.js';
-const input = ['0x77754bdda8a6391f340bb2ffe2da6a58a30b7228', 118097355];
+const input = ['0x77754bdda8a6391f340bb2ffe2da6a58a30b7228', 118097355*10**18];
 const deployRegister = await contractDeploy(abi, bin, input);
 console.log('DEPLOY::', deployRegister);
 

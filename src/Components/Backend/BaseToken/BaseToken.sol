@@ -28,7 +28,7 @@ contract BaseToken {
   function exchangeETHBase() public payable returns(bool success) {
   	success = false;//TC
   	uint256 value = msg.value;//MintingValue
-  	require(value > 1000, "ERROR:checkCode00");
+  	require(value > 1000000, "ERROR:checkCode00");
   	BaseTokenMapping[msg.sender] += value;//Minting
     BaseTokenCurrentSupply += value;
     emit Log("DEBUG:Base.Function.exchangeETHBase:done");

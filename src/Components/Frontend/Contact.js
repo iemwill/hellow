@@ -43,14 +43,14 @@ class Contact extends Component {
           <a id="ethereum" href="mailto:hello@laubenheimer.eu"
             onClick={() => this._addWebAppAction(9)}>Consultent</a>
           <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-          <br/><br/><a id="bitcoin" href="bitcoin:bc1qmupy24nxjr822smvq8a2x33vd5tc6dth56p897"
-            onClick={() => this._addWebAppAction(10)}>bc1qmupy24nxjr822smvq8a2x33vd5tc6dth56p897</a>
-          <br/><br/><a id="ethereum" href="ethereum:0x7Cbd7A31cF11643b985DaE722bc996A69eDdC5AF"
-            onClick={() => this._addWebAppAction(11)}>0x7Cbd7A31cF11643b985DaE722bc996A69eDdC5AF</a>
+          <br/><br/><a id="bitcoin" href="bitcoin:18hb1Mf5cysiC1RGKrbNRR2QjDLUnXVnZL"
+            onClick={() => this._addWebAppAction(10)}>18hb1Mf5cysiC1RGKrbNRR2QjDLUnXVnZL</a>
+          <br/><br/><a id="ethereum" href="ethereum:0xc3577e1BF219c041306dDa4689a1D1Fb531329A0"
+            onClick={() => this._addWebAppAction(11)}>0xc3577e1BF219c041306dDa4689a1D1Fb531329A0</a>
           <br/><br/>DE75100100100959924103
           <br/><br/>
-          <hr/><br/>Testnet-Token: <a href="https://ropsten.etherscan.io/address/0xFe230ee0C3D613d540c7BFd8465646c81FfBB842" target="_blank" rel="noreferrer"
-            onClick={() => this._addWebAppAction(12)}>0xFe230ee0C3D613d540c7BFd8465646c81FfBB842</a> on Ropsten
+          <hr/><br/>Testnet-Token: <a href="https://ropsten.etherscan.io/address/0x2f6041024c4846A817CaB429e83c6cDCeC22F653" target="_blank" rel="noreferrer"
+            onClick={() => this._addWebAppAction(12)}>0x2f6041024c4846A817CaB429e83c6cDCeC22F653</a> on Ropsten
           <br/><br/>NFT-Register: <a href="https://ropsten.etherscan.io/address/0x1CE8ac1E22DAf01406F2AdBaB87CF94516d068Eb" target="_blank" rel="noreferrer"
             onClick={() => this._addWebAppAction(13)}>0x1CE8ac1E22DAf01406F2AdBaB87CF94516d068Eb</a> on Ropsten
           <br/><br/>
