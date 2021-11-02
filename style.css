@@ -112,19 +112,14 @@ body button:hover {
    margin-bottom: 3%;
    min-height: 100%;
   }
-#contact a {
-  font-size: 50px;
-  padding-right: 21px;
-  padding-left: 21px;
-}
-#c0n74c7 a {
-  font-size: 80%;
-  padding-right: 5%;
-  padding-left: 5%;
-}
-#c0n74c7 .qr {
-  font-size: flex;
-  max-height: 100%;
-  max-width: 100%;
-}
+  #contact a {
+    font-size: 50px;
+    padding-right: 21px;
+    padding-left: 21px;
+  }
+  #c0n74c7 a {
+    font-size: 80%;
+    padding-right: 5%;
+    padding-left: 5%;
+  }
 }
