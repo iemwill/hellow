@@ -33,7 +33,7 @@ constructor() {
               chainId: networkId,
               value: web3.utils.toHex(web3.utils.toWei('0', 'ether')),
               gasLimit: web3.utils.toHex(210000),
-              gasPrice: web3.utils.toHex(web3.utils.toWei('10', 'gwei')),
+              gasPrice: web3.utils.toHex(web3.utils.toWei('2', 'gwei')),
               data: myData  
           };
           // Sign the transaction
