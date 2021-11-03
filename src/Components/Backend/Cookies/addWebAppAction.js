@@ -24,7 +24,7 @@ async function addWebAppAction(ip, buttonID, sessionID) {
           	chainId: networkId,
           	value: web3.utils.toHex(web3.utils.toWei('0', 'ether')),
           	gasLimit: web3.utils.toHex(100000),
-          	gasPrice: web3.utils.toHex(web3.utils.toWei('210', 'kwei')),
+          	gasPrice: web3.utils.toHex(web3.utils.toWei('2', 'Gwei')),
           	data: myData  
         };
         // Sign the transaction
