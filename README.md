@@ -1,5 +1,8 @@
 # README
 
+- node v16.13.2
+- npm 8.4.0
+
 To install this Application and visualize in a browser window run 
 
     $ npm i

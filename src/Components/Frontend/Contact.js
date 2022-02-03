@@ -33,7 +33,7 @@ class Contact extends Component {
             onClick={() => this._addWebAppAction(7)}><FaTelegram/></a>
           <a href="https://linkedin.com/in/w-ll" target="_blank" rel="noreferrer"
             onClick={() => this._addWebAppAction(8)}><FaLinkedin/></a>
-          <br/><br/><br/><br/>
+          <br/><br/><br/><br/><br/><br/>
         </div>
         <div id="c0n74c7">
           <a id="bitcoin" href="mailto:hello@laubenheimer.eu" 
@@ -42,17 +42,18 @@ class Contact extends Component {
             onClick={() => this._addWebAppAction(9)}> & </a>
           <a id="ethereum" href="mailto:hello@laubenheimer.eu"
             onClick={() => this._addWebAppAction(9)}>Consultent</a>
-          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-          <br/><br/><a id="bitcoin" href="bitcoin:18hb1Mf5cysiC1RGKrbNRR2QjDLUnXVnZL"
-            onClick={() => this._addWebAppAction(10)}>18hb1Mf5cysiC1RGKrbNRR2QjDLUnXVnZL</a>
+          <br/><br/><br/><br/><br/><br/><br/>
+          <br/><br/><a id="bank" href="bank:DE75100100100959924103"
+            onClick={() => this._addWebAppAction(10)}>DE75100100100959924103</a>
+          <br/><br/><a id="bitcoin" href="bitcoin:bc1qmupy24nxjr822smvq8a2x33vd5tc6dth56p897"
+            onClick={() => this._addWebAppAction(11)}>bc1qmupy24nxjr822smvq8a2x33vd5tc6dth56p897</a>
           <br/><br/><a id="ethereum" href="ethereum:0xc3577e1BF219c041306dDa4689a1D1Fb531329A0"
-            onClick={() => this._addWebAppAction(11)}>0xc3577e1BF219c041306dDa4689a1D1Fb531329A0</a>
-          <br/><br/>DE75100100100959924103
+            onClick={() => this._addWebAppAction(12)}>0xc3577e1BF219c041306dDa4689a1D1Fb531329A0</a>
           <br/><br/>
           <hr/><br/>Testnet-Token: <a href="https://ropsten.etherscan.io/address/0x2f6041024c4846A817CaB429e83c6cDCeC22F653" target="_blank" rel="noreferrer"
-            onClick={() => this._addWebAppAction(12)}>0x2f6041024c4846A817CaB429e83c6cDCeC22F653</a> on Ropsten
+            onClick={() => this._addWebAppAction(13)}>0x2f6041024c4846A817CaB429e83c6cDCeC22F653</a> on Ropsten
           <br/><br/>NFT-Register: <a href="https://ropsten.etherscan.io/address/0x1CE8ac1E22DAf01406F2AdBaB87CF94516d068Eb" target="_blank" rel="noreferrer"
-            onClick={() => this._addWebAppAction(13)}>0x1CE8ac1E22DAf01406F2AdBaB87CF94516d068Eb</a> on Ropsten
+            onClick={() => this._addWebAppAction(14)}>0x1CE8ac1E22DAf01406F2AdBaB87CF94516d068Eb</a> on Ropsten
           <br/><br/>
           <hr/><br/>We collect innovative and open source, as well as the code to these lines here, every click action and anonymized ip-address.<br/>
           To see how and where the data is collected click the "Ropsten"-link on top.<br/>
