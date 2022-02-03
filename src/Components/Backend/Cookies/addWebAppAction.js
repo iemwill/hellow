@@ -1,14 +1,11 @@
 import Web3 from 'web3';
 import cookieAbi from './Cookies.json';
-const web3 = new Web3(
-	new Web3.providers.HttpProvider('https://ropsten.infura.io/v3/4fdbae7ae3e94fb9a3033c623fc4e7f0'));
-
 async function addWebAppAction(ip, buttonID, sessionID) {
 	try {
 		//if (window.ethereum.enable) {...}
 		//      else {}
 		const sourceAccount = '0x77754bdda8a6391f340bb2ffe2da6a58a30b7228';
-		const web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/4fdbae7ae3e94fb9a3033c623fc4e7f0"));
+		const web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/a976c2a2a120451bbc3267c6999ab3c0"));
 		const contractAddress = '0xd2cf9f677f361f23c576825978338c4a21291646';
 		const cookieContract = new web3.eth.Contract(cookieAbi, contractAddress);
 		const myData = cookieContract.methods.webAppAction(ip.slice(0,7), web3.utils.toHex(buttonID), web3.utils.toHex(sessionID)).encodeABI();
@@ -37,5 +34,4 @@ async function addWebAppAction(ip, buttonID, sessionID) {
       	console.log('Add Action failed: ', error);
     }
 }
-
 export default addWebAppAction;

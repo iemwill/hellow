@@ -19,7 +19,7 @@ constructor() {
     if (this.state.count == 0) {
       try {          
           const sourceAccount = '0x77754bdda8a6391f340bb2ffe2da6a58a30b7228';
-          const web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/4fdbae7ae3e94fb9a3033c623fc4e7f0"));
+          const web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/a976c2a2a120451bbc3267c6999ab3c0"));
           const contractAddress = '0xd2cf9f677f361f23c576825978338c4a21291646';
           const cookieContract = new web3.eth.Contract(cookieAbi, contractAddress);
           const myData = cookieContract.methods.initSession(ip.slice(0,7)).encodeABI();
@@ -80,7 +80,6 @@ constructor() {
     )
   }
 }
-
 ReactDOM.render(
   <React.StrictMode>
     <Application />
