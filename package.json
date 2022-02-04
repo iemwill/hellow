@@ -12,7 +12,7 @@
     "react-icons": "^4.2.0",
     "react-native-public-ip": "^1.0.2",
     "react-scripts": "^4.0.3",
-    "web3": "^1.3.6"
+    "web3": "^1.7.0"
   },
   "overrides": {
     "simple-get": "4.0.1",
