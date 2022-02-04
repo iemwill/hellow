@@ -13,7 +13,7 @@ class EthereumDataMin extends Component {
 	async getLatestBlock() {
   		try {
 		    const web3 = new Web3(
-	    		new Web3.providers.HttpProvider('https://mainnet.infura.io/v3/4fdbae7ae3e94fb9a3033c623fc4e7f0')
+	    		new Web3.providers.HttpProvider(process.env.REACT_APP_API_KEY)
 	  		);
 	  		const latestBlock = await web3.eth.getBlock('latest');
 	  		const length = latestBlock.transactions.length;
@@ -36,7 +36,7 @@ class EthereumDataMin extends Component {
 		if (this.state.count == 0) {
 			this.getLatestBlock();
 		}
-		const blockNumber = this.state.latestBlock;
+		const block = this.state.latestBlock;
 		const length = this.state.length;
 	return (
 		<section id="ethereumDataMin">
@@ -44,10 +44,10 @@ class EthereumDataMin extends Component {
 				<a href='https://etherscan.io/blocks' target="_blank" rel='noreferrer' onClick={() => this._addWebAppAction(2)}>
 				<button>ethereum data</button>
 				</a>
-				<br/><h2>Blocknumber<br/><span>{blockNumber.number}</span></h2>
-				<br/><h2>Puzzle Solver<br/><span>{blockNumber.miner}</span></h2>
+				<br/><h2>Blocknumber<br/><span>{block.number}</span></h2>
+				<br/><h2>Puzzle Solver<br/><span>{block.miner}</span></h2>
 				<br/><h2>Transactions<br/><span>{length}</span></h2>
-				<br/><h2>Size in Bytes<br/><span>{blockNumber.size}</span></h2>
+				<br/><h2>Size in Bytes<br/><span>{block.size}</span></h2>
 				<button onClick={() => this._addWebAppAction(3)}>update block</button><br/><br/><br/>
 				<h3>To verify the above visualized data take a look at the ethereum blockchain explorer.<br/>
 				A tool to read data from the ethereum blockchain via the browser.
