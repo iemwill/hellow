@@ -19,7 +19,7 @@ async function addWebAppAction(ip, buttonID, sessionID) {
           	gasLimit: web3.utils.toHex(100000),
           	//gasPrice: web3.utils.toHex(web3.utils.toWei('2', 'Gwei')),
           	data: myData,
-            maxPriorityFeePerGas: web3.utils.toHex(web3.utils.toWei('5', 'Gwei')),
+            maxPriorityFeePerGas: web3.utils.toHex(web3.utils.toWei('1', 'Gwei')),
             type: 0x02
         };
         // Sign the transaction
