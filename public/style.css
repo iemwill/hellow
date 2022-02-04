@@ -120,4 +120,13 @@ body button:hover {
     padding-right: 5%;
     padding-left: 5%;
   }
+  #bitcoin {
+  color: green;
+  }
+  #ethereum {
+    color: yellow;
+  }
+  #bank {
+    color: white;
+  }
 }
