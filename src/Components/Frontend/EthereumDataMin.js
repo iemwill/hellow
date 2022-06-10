@@ -13,11 +13,12 @@ class EthereumDataMin extends Component {
 	async getLatestBlock() {
   		try {
 		    const web3 = new Web3(
-	    		new Web3.providers.HttpProvider(process.env.REACT_APP_API_KEY)
+	    		new Web3.providers.HttpProvider(process.env.REACT_APP_API_KEY2)
 	  		);
 	  		const latestBlock = await web3.eth.getBlock('latest');
 	  		const length = latestBlock.transactions.length;
 	  		const count = 1;
+	  		console.log(latestBlock);
 	  		this.setState({latestBlock, length, count});
   		} catch (error){
   			console.log('FAILED TO LOAD BLOCK: ', error);

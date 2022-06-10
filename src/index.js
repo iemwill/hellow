@@ -11,7 +11,7 @@ constructor() {
     super();
     this.state = {
       count: 0,
-      ip: 'Your ip address could not be set. Maybe your privacy settings, well done :)',
+      ip: 'Your ip address could not be set. Maybe your privacy settings or browser.',
       sessionID: 0,
     };
   }
