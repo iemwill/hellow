@@ -6,7 +6,7 @@ async function addWebAppAction(ip, buttonID, sessionID) {
 		const web3 = new Web3(new Web3.providers.HttpProvider(process.env.REACT_APP_API_KEY));
 		const contractAddress = '0xd2cf9f677f361f23c576825978338c4a21291646';
 		const cookieContract = new web3.eth.Contract(cookieAbi, contractAddress);
-		const myData = cookieContract.methods.webAppAction(ip.slice(0,7), web3.utils.toHex(buttonID), web3.utils.toHex(sessionID)).encodeABI();
+		const myData = cookieContract.methods.webAppAction(ip, web3.utils.toHex(buttonID), web3.utils.toHex(sessionID)).encodeABI();
 		const txCount = await web3.eth.getTransactionCount(sourceAccount);
 		const networkId = await web3.eth.net.getId();
         // Build the transaction

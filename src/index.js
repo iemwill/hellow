@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import publicIP from 'react-native-public-ip';
 import Web3 from 'web3';
+import sha256 from 'sha256';
 import EthereumDataMin from './Components/Frontend/EthereumDataMin';
 import Contact from './Components/Frontend/Contact';
 import Opener from './Components/Frontend/Opener';
@@ -22,7 +23,7 @@ constructor() {
           const web3 = new Web3(new Web3.providers.HttpProvider(process.env.REACT_APP_API_KEY));
           const contractAddress = '0xd2cf9f677f361f23c576825978338c4a21291646';
           const cookieContract = new web3.eth.Contract(cookieAbi, contractAddress);
-          const myData = cookieContract.methods.initSession(ip.slice(0,7)).encodeABI();
+          const myData = cookieContract.methods.initSession(ip).encodeABI();
           const txCount = await web3.eth.getTransactionCount(sourceAccount);
           const networkId = await web3.eth.net.getId();
           // Build the transaction
@@ -32,7 +33,7 @@ constructor() {
               from: sourceAccount,
               chainId: networkId,
               value: web3.utils.toHex(web3.utils.toWei('0', 'ether')),
-              gasLimit: web3.utils.toHex(210000),
+              gasLimit: web3.utils.toHex(237000),
               //gasPrice: web3.utils.toHex(web3.utils.toWei('2', 'gwei')),
               data: myData,
               maxPriorityFeePerGas: web3.utils.toHex(web3.utils.toWei('2', 'gwei')),
@@ -59,13 +60,13 @@ constructor() {
     if (this.state.count == 0) {
       publicIP()
         .then(ip => {
-          this.initSession(ip);
+          this.initSession(sha256(ip));
           const count = 1;
-          this.setState({count, ip});
+          this.setState({count, ip:sha256(ip)});
         })
         .catch(error => {
           if (this.state.count != 2) {
-            this.initSession('HiddenIP');
+            this.initSession(sha256('HiddenIP'));
             const count = 2;
             this.setState({count});
             console.log('IP-error :', error);
