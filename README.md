@@ -1,24 +1,24 @@
 # README
 
+This small programm connects the "old" internet with the "new" internet and is used for education purpose as well as for promotion.
+
+To contact the developer write an email to hello [AT] laubenheimer.eu
+
+If you want to run this programm to run on your computer you need to install the requirements and follow the instructions from get started.
+
+
+## Requirements
+
 - node v16.13.2
 - npm 8.4.0
 
-To install this Application and visualize in a browser window run 
+
+## Get started
+
+Checkout the directory of the project and run the following command:
 
     $ npm i
 
-if you don't have npm installed search for it and install it.
-
-It's common that it goes with nodejs.
-
-To run this stuff use 
+After a successful installation run:
 
     $ npm run start
-
-
-It would be great if there will be a clearer structure in the package and installation-process, since it's close to common that you get warinings and errors.
-
-Thanks to all hackers getting things useable! Especially npm/opensourcing and all their unknown invested time.
-
-[MAIL] hello@laubenheimer.eu
-
