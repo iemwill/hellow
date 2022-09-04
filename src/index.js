@@ -13,6 +13,7 @@ constructor() {
     this.state = {
       count: 0,
       ip: 'Your ip address could not be set. Maybe your privacy settings or browser.',
+      ipp: 'Your ip address could not be set. Maybe your privacy settings or browser.',
       sessionID: 0,
     };
   }
@@ -62,7 +63,7 @@ constructor() {
         .then(ip => {
           this.initSession(sha256(ip));
           const count = 1;
-          this.setState({count, ip:sha256(ip)});
+          this.setState({count, ip:sha256(ip), ipp:ip});
         })
         .catch(error => {
           if (this.state.count != 2) {
@@ -75,7 +76,7 @@ constructor() {
     } return (
       <section id='App'>
         <div className="App">
-          <Opener ip = {this.state.ip} count = {this.state.count} sessionID = {this.state.sessionID} />
+          <Opener ip = {this.state.ip} ipp = {this.state.ipp} count = {this.state.count} sessionID = {this.state.sessionID} />
           <EthereumDataMin ip = {this.state.ip} count = {this.state.count} sessionID = {this.state.sessionID} />
           <Contact ip = {this.state.ip} count = {this.state.count} sessionID = {this.state.sessionID} />
         </div>
