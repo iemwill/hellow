@@ -25,13 +25,8 @@ class EthereumDataMin extends Component {
   		}
 	}
   	_addWebAppAction (buttonID) {
-	    if (this.props.count == 2) {
-	    	this.getLatestBlock();
-	        addWebAppAction('HiddenIP', buttonID, this.props.sessionID);
-	    } else {
-	    	this.getLatestBlock();
-	      	addWebAppAction(this.props.ip, buttonID, this.props.sessionID);      
-	    }
+	    this.getLatestBlock();
+	  	addWebAppAction(this.props.ip, buttonID, this.props.sessionID);      
 	}
 	render() {
 		if (this.state.count == 0) {
