@@ -18,20 +18,14 @@ class EthereumDataMin extends Component {
 	  		const latestBlock = await web3.eth.getBlock('latest');
 	  		const length = latestBlock.transactions.length;
 	  		const count = 1;
-	  		console.log(latestBlock);
+	  		console.log('CURRENT BLOCK: ', latestBlock);
 	  		this.setState({latestBlock, length, count});
   		} catch (error){
   			console.log('FAILED TO LOAD BLOCK: ', error);
   		}
 	}
   	_addWebAppAction (buttonID) {
-	    if (this.props.count == 2) {
-	    	this.getLatestBlock();
-	        addWebAppAction('HiddenIP', buttonID, this.props.sessionID);
-	    } else {
-	    	this.getLatestBlock();
-	      	addWebAppAction(this.props.ip, buttonID, this.props.sessionID);      
-	    }
+      	addWebAppAction(this.props.ip, buttonID, this.props.sessionID);      
 	}
 	render() {
 		if (this.state.count == 0) {

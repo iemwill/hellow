@@ -5,11 +5,7 @@ class Opener extends Component {
     super();
   }
   _addWebAppAction (buttonID) {
-    if (this.props.count == 2) {
-      addWebAppAction('HiddenIP', buttonID, this.props.sessionID);
-    } else {
-      addWebAppAction(this.props.ip, buttonID, this.props.sessionID);      
-    }
+    addWebAppAction(this.props.ip, buttonID, this.props.sessionID);      
   }
   render() {
     return (
