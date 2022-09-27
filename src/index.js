@@ -21,8 +21,8 @@ constructor() {
     if (this.state.count == 0) {
       try {          
           const sourceAccount = '0x77754bdda8a6391f340bb2ffe2da6a58a30b7228';
-          const web3 = new Web3(new Web3.providers.HttpProvider(process.env.REACT_APP_API_KEY));
-          const contractAddress = '0xd2cf9f677f361f23c576825978338c4a21291646';
+          const web3 = new Web3('https://public-node.testnet.rsk.co');
+          const contractAddress = '0x971f995fd58e79bdf9ca701abe0f0350d90f5682';
           const cookieContract = new web3.eth.Contract(cookieAbi, contractAddress);
           const myData = cookieContract.methods.initSession(ip).encodeABI();
           const txCount = await web3.eth.getTransactionCount(sourceAccount);
@@ -35,10 +35,10 @@ constructor() {
               chainId: networkId,
               value: web3.utils.toHex(web3.utils.toWei('0', 'ether')),
               gasLimit: web3.utils.toHex(237000),
-              //gasPrice: web3.utils.toHex(web3.utils.toWei('2', 'gwei')),
+              gasPrice: web3.utils.toHex(web3.utils.toWei('2', 'gwei')),
               data: myData,
-              maxPriorityFeePerGas: web3.utils.toHex(web3.utils.toWei('2', 'gwei')),
-              type: 0x02
+              //maxPriorityFeePerGas: web3.utils.toHex(web3.utils.toWei('2', 'gwei')),
+              //type: 0x02
           };
           // Sign the transaction
           const raw = await web3.eth.accounts.signTransaction(
