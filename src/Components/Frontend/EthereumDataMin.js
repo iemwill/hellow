@@ -24,8 +24,8 @@ class EthereumDataMin extends Component {
   			console.log('FAILED TO LOAD BLOCK: ', error);
   		}
 	}
-  	_addWebAppAction (buttonID) {
-	  	addWebAppAction(this.props.ip, buttonID, this.props.sessionID);      
+  _addWebAppAction (buttonID) {
+    addWebAppAction(this.props.ip, buttonID, this.props.sessionID);      
 	}
 	render() {
 		if (this.state.count == 0) {
