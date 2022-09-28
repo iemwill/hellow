@@ -57,7 +57,7 @@ class Contact extends Component {
             onClick={() => this._addWebAppAction(16)}>0x29974e44cdaf0fb61467013a46e21ef387cfbb16</a>
           <br/><br/>
           <hr/><br/>We collect innovative and open source, as well as the code to these lines here, every click action and anonymized ip-address.<br/>
-          To see how and where the data is collected click the "Ropsten"-link on top.<br/>
+          To see how and where the data is collected click the "RSKsmart"-link on top.<br/>
           Thank you for visiting this Application !
         </div>
   	  </section>
