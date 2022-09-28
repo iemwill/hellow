@@ -25,6 +25,8 @@ constructor() {
           const contractAddress = '0xd2cf9f677f361f23c576825978338c4a21291646';
           const cookieContract = new web3.eth.Contract(cookieAbi, contractAddress);
           const myData = cookieContract.methods.initSession(ip).encodeABI();
+          const estimateGas = await cookieContract.methods.initSession(ip).estimateGas({from: sourceAccount});
+          console.log('ESTIMATED GAS: ', estimateGas);
           const txCount = await web3.eth.getTransactionCount(sourceAccount);
           const networkId = await web3.eth.net.getId();
           // Build the transaction
@@ -34,7 +36,7 @@ constructor() {
               from: sourceAccount,
               chainId: networkId,
               value: web3.utils.toHex(web3.utils.toWei('0', 'ether')),
-              gasLimit: web3.utils.toHex(237000),
+              gasLimit: web3.utils.toHex(Math.round(estimateGas * 1.1)),
               //gasPrice: web3.utils.toHex(web3.utils.toWei('2', 'gwei')),
               data: myData,
               maxPriorityFeePerGas: web3.utils.toHex(web3.utils.toWei('2', 'gwei')),
