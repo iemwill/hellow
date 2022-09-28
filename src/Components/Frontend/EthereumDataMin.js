@@ -25,7 +25,6 @@ class EthereumDataMin extends Component {
   		}
 	}
   	_addWebAppAction (buttonID) {
-	    this.getLatestBlock();
 	  	addWebAppAction(this.props.ip, buttonID, this.props.sessionID);      
 	}
 	render() {
