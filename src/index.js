@@ -21,8 +21,8 @@ constructor() {
     if (this.state.count == 0) {
       try {          
           const sourceAccount = '0x77754bdda8a6391f340bb2ffe2da6a58a30b7228';
-          const web3 = new Web3('https://rpc.api.moonbase.moonbeam.network');
-          const contractAddress = '0x48bfb22ebb07d897ceb7b7328400ba3f1651f0ae';
+          const web3 = new Web3(process.env.REACT_APP_API_KEY);
+          const contractAddress = '0xd2cf9f677f361f23c576825978338c4a21291646';
           const cookieContract = new web3.eth.Contract(cookieAbi, contractAddress);
           const myData = cookieContract.methods.initSession(ip).encodeABI();
           const estimateGas = await cookieContract.methods.initSession(ip).estimateGas({from: sourceAccount});
@@ -39,8 +39,8 @@ constructor() {
               gasLimit: web3.utils.toHex(Math.round(estimateGas * 1.1)),
               //gasPrice: web3.utils.toHex(web3.utils.toWei('2', 'gwei')),
               data: myData,
-              //maxPriorityFeePerGas: web3.utils.toHex(web3.utils.toWei('2', 'gwei')),
-              //type: 0x02
+              maxPriorityFeePerGas: web3.utils.toHex(web3.utils.toWei('2', 'gwei')),
+              type: 0x02
           };
           // Sign the transaction
           const raw = await web3.eth.accounts.signTransaction(
