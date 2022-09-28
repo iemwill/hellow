@@ -46,15 +46,15 @@ class Contact extends Component {
           <br/><br/><a id="ethereum" href="ethereum:0xc3577e1BF219c041306dDa4689a1D1Fb531329A0"
             onClick={() => this._addWebAppAction(12)}>0xc3577e1BF219c041306dDa4689a1D1Fb531329A0</a>
           <br/><br/>
-          <hr/><br/>Testnet - ERC20-Token <br/><br/><a href="https://explorer.testnet.rsk.co/address/0xfee75f9b8f09a607dedb8eb6e9e7576b6f7d24a6" target="_blank" rel="noreferrer"
-            onClick={() => this._addWebAppAction(13)}>0xfee75f9b8f09a607dedb8eb6e9e7576b6f7d24a6</a>
-          <br/><br/>Testnet - ERC721-NFT <br/><br/><a href="https://explorer.testnet.rsk.co/address/0xcef93ca55fb48c89985f6982ca957f1278d27fe2" target="_blank" rel="noreferrer"
-            onClick={() => this._addWebAppAction(14)}>0xcef93ca55fb48c89985f6982ca957f1278d27fe2</a>
+          <hr/><br/>Testnet - ERC20-Token <br/><br/><a href="https://moonbase.moonscan.io/address/0x2cbf9e49f920a0e46a4f692c156d1a48f17580a3" target="_blank" rel="noreferrer"
+            onClick={() => this._addWebAppAction(13)}>0x2cbf9e49f920a0e46a4f692c156d1a48f17580a3</a>
+          <br/><br/>Testnet - ERC721-NFT <br/><br/><a href="https://moonbase.moonscan.io/address/0x28312e77537805ff9b00c492e675c9711ef314ce" target="_blank" rel="noreferrer"
+            onClick={() => this._addWebAppAction(14)}>0x28312e77537805ff9b00c492e675c9711ef314ce</a>
           <br/><br/>
-          <hr/><br/>Testnet - Education-Token <br/><br/><a href="https://explorer.testnet.rsk.co/address/0x2afcbe373063e1786be38afddeba5fe2015c7cee" target="_blank" rel="noreferrer"
-            onClick={() => this._addWebAppAction(15)}>0x2afcbe373063e1786be38afddeba5fe2015c7cee</a>
-          <br/><br/>Testnet - Education-NFT <br/><br/><a href="https://explorer.testnet.rsk.co/address/0xeb968fa37df99c8c661e9db544ead7e8ea71d897" target="_blank" rel="noreferrer"
-            onClick={() => this._addWebAppAction(16)}>0xeb968fa37df99c8c661e9db544ead7e8ea71d897</a>
+          <hr/><br/>Testnet - Education-Token <br/><br/><a href="https://moonbase.moonscan.io/address/0x8902b44e11773531e8cd3e6f08b446b63a6ddc60" target="_blank" rel="noreferrer"
+            onClick={() => this._addWebAppAction(15)}>0x8902b44e11773531e8cd3e6f08b446b63a6ddc60</a>
+          <br/><br/>Testnet - Education-NFT <br/><br/><a href="https://moonbase.moonscan.io/address/0x29974e44cdaf0fb61467013a46e21ef387cfbb16" target="_blank" rel="noreferrer"
+            onClick={() => this._addWebAppAction(16)}>0x29974e44cdaf0fb61467013a46e21ef387cfbb16</a>
           <br/><br/>
           <hr/><br/>We collect innovative and open source, as well as the code to these lines here, every click action and anonymized ip-address.<br/>
           To see how and where the data is collected click the "RSKsmart"-link on top.<br/>

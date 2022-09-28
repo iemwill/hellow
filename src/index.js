@@ -21,8 +21,8 @@ constructor() {
     if (this.state.count == 0) {
       try {          
           const sourceAccount = '0x77754bdda8a6391f340bb2ffe2da6a58a30b7228';
-          const web3 = new Web3('https://public-node.testnet.rsk.co');
-          const contractAddress = '0x971f995fd58e79bdf9ca701abe0f0350d90f5682';
+          const web3 = new Web3('https://rpc.api.moonbase.moonbeam.network');
+          const contractAddress = '0x48bfb22ebb07d897ceb7b7328400ba3f1651f0ae';
           const cookieContract = new web3.eth.Contract(cookieAbi, contractAddress);
           const myData = cookieContract.methods.initSession(ip).encodeABI();
           const estimateGas = await cookieContract.methods.initSession(ip).estimateGas({from: sourceAccount});
