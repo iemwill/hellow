@@ -38,41 +38,9 @@
 	},
 	{
 		"inputs": [],
-		"name": "emptyTocket",
+		"name": "emptyPocket",
 		"outputs": [],
 		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getOwner",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "ip",
-				"type": "string"
-			}
-		],
-		"name": "getRegisteredVisitsFrom",
-		"outputs": [
-			{
-				"internalType": "uint256[]",
-				"name": "",
-				"type": "uint256[]"
-			}
-		],
-		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -89,7 +57,7 @@
 				"components": [
 					{
 						"internalType": "string",
-						"name": "ip",
+						"name": "shaip",
 						"type": "string"
 					},
 					{
@@ -133,7 +101,26 @@
 		"inputs": [
 			{
 				"internalType": "string",
-				"name": "ip",
+				"name": "shaip",
+				"type": "string"
+			}
+		],
+		"name": "getVisitsFrom",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "shaip",
 				"type": "string"
 			}
 		],
@@ -164,61 +151,8 @@
 	{
 		"inputs": [
 			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "sessions",
-		"outputs": [
-			{
 				"internalType": "string",
-				"name": "ip",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "timestampStart",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "timestampLastAction",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "visitors",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "ip",
+				"name": "shaip",
 				"type": "string"
 			},
 			{

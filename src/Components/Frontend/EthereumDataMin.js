@@ -24,8 +24,8 @@ class EthereumDataMin extends Component {
   			console.log('FAILED TO LOAD BLOCK: ', error);
   		}
 	}
-  	_addWebAppAction (buttonID) {
-      	addWebAppAction(this.props.ip, buttonID, this.props.sessionID);      
+  _addWebAppAction (buttonID) {
+    addWebAppAction(this.props.ip, buttonID, this.props.sessionID);      
 	}
 	render() {
 		if (this.state.count == 0) {
@@ -40,7 +40,7 @@ class EthereumDataMin extends Component {
 				<button>ethereum data</button>
 				</a>
 				<br/><h2>Blocknumber<br/><span>{block.number}</span></h2>
-				<br/><h2>Puzzle Solver<br/><span>{block.miner}</span></h2>
+				<br/><h2>Fee Recipient<br/><span>{block.miner}</span></h2>
 				<br/><h2>Transactions<br/><span>{length}</span></h2>
 				<br/><h2>Size in Bytes<br/><span>{block.size}</span></h2>
 				<button onClick={() => this._addWebAppAction(3)}>update block</button><br/><br/><br/>

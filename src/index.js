@@ -52,7 +52,7 @@ constructor() {
           console.log('TX: ', transaction);
           console.log('Data: ', transaction.logs[0].data);
           console.log('SessionID: ', web3.eth.abi.decodeParameters(['string', 'uint256'], transaction.logs[0].data)[1]);
-          this.setState({sessionID:web3.eth.abi.decodeParameters(['string', 'uint256'], transaction.logs[0].data)[1]});
+          this.setState({sessionID: web3.eth.abi.decodeParameters(['string', 'uint256'], transaction.logs[0].data)[1]});
       } catch (error) {
         console.log('Initialization failed: ', error);
       }
