@@ -46,18 +46,18 @@ class Contact extends Component {
           <br/><br/><a id="ethereum" href="ethereum:0xc3577e1BF219c041306dDa4689a1D1Fb531329A0"
             onClick={() => this._addWebAppAction(12)}>0xc3577e1BF219c041306dDa4689a1D1Fb531329A0</a>
           <br/><br/>
-          <hr/><br/>Testnet - ERC20-Token <br/><br/><a href="https://ropsten.etherscan.io/address/0xd14045FB084E0Fa989966Fbe445D67DdC8d3901e" target="_blank" rel="noreferrer"
-            onClick={() => this._addWebAppAction(13)}>0xd14045FB084E0Fa989966Fbe445D67DdC8d3901e</a>
-          <br/><br/>Testnet - ERC721-NFT <br/><br/><a href="https://ropsten.etherscan.io/address/0x1390a124d519078d5879edf7b95cce83306b3e95" target="_blank" rel="noreferrer"
-            onClick={() => this._addWebAppAction(14)}>0x1390a124d519078d5879edf7b95cce83306b3e95</a>
+          <hr/><br/>Testnet - ERC20-Token <br/><br/><a href="https://explorer.testnet.rsk.co/address/0xfee75f9b8f09a607dedb8eb6e9e7576b6f7d24a6" target="_blank" rel="noreferrer"
+            onClick={() => this._addWebAppAction(13)}>0xfee75f9b8f09a607dedb8eb6e9e7576b6f7d24a6</a>
+          <br/><br/>Testnet - ERC721-NFT <br/><br/><a href="https://explorer.testnet.rsk.co/address/0xcef93ca55fb48c89985f6982ca957f1278d27fe2" target="_blank" rel="noreferrer"
+            onClick={() => this._addWebAppAction(14)}>0xcef93ca55fb48c89985f6982ca957f1278d27fe2</a>
           <br/><br/>
-          <hr/><br/>Testnet - Education-Token <br/><br/><a href="https://ropsten.etherscan.io/address/0x2f6041024c4846A817CaB429e83c6cDCeC22F653" target="_blank" rel="noreferrer"
-            onClick={() => this._addWebAppAction(15)}>0x2f6041024c4846A817CaB429e83c6cDCeC22F653</a>
-          <br/><br/>Testnet - Education-NFT <br/><br/><a href="https://ropsten.etherscan.io/address/0x1CE8ac1E22DAf01406F2AdBaB87CF94516d068Eb" target="_blank" rel="noreferrer"
-            onClick={() => this._addWebAppAction(16)}>0x1CE8ac1E22DAf01406F2AdBaB87CF94516d068Eb</a>
+          <hr/><br/>Testnet - Education-Token <br/><br/><a href="https://explorer.testnet.rsk.co/address/0x2afcbe373063e1786be38afddeba5fe2015c7cee" target="_blank" rel="noreferrer"
+            onClick={() => this._addWebAppAction(15)}>0x2afcbe373063e1786be38afddeba5fe2015c7cee</a>
+          <br/><br/>Testnet - Education-NFT <br/><br/><a href="https://explorer.testnet.rsk.co/address/0xeb968fa37df99c8c661e9db544ead7e8ea71d897" target="_blank" rel="noreferrer"
+            onClick={() => this._addWebAppAction(16)}>0xeb968fa37df99c8c661e9db544ead7e8ea71d897</a>
           <br/><br/>
           <hr/><br/>We collect innovative and open source, as well as the code to these lines here, every click action and anonymized ip-address.<br/>
-          To see how and where the data is collected click the "Ropsten"-link on top.<br/>
+          To see how and where the data is collected click the "RSKsmart"-link on top.<br/>
           Thank you for visiting this Application !
         </div>
   	  </section>
