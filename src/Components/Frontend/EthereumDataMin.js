@@ -13,7 +13,7 @@ class EthereumDataMin extends Component {
 	async getLatestBlock() {
   		try {
 		    const web3 = new Web3(
-	    		new Web3.providers.HttpProvider('https://rpc.api.moonbase.moonbeam.network')
+	    		new Web3.providers.HttpProvider(process.env.REACT_APP_API_KEY2)
 	  		);
 	  		const latestBlock = await web3.eth.getBlock('latest');
 	  		console.log('LATEST BLOCK: ', latestBlock);
@@ -43,11 +43,11 @@ class EthereumDataMin extends Component {
 	return (
 		<section id="ethereumDataMin">
 			<div className="ethereumDataMin">
-				<a href='https://moonbase.moonscan.io/blocks' target="_blank" rel='noreferrer' onClick={() => this._addWebAppAction(2)}>
-				<button>moonbase data</button>
+				<a href='https://etherscan.io/blocks' target="_blank" rel='noreferrer' onClick={() => this._addWebAppAction(2)}>
+				<button>ethereum data</button>
 				</a>
 				<br/><h2>Blocknumber<br/><span>{block.number}</span></h2>
-				<br/><h2>Collator<br/><span>{block.miner}</span></h2>
+				<br/><h2>Fee-Recipient<br/><span>{block.miner}</span></h2>
 				<br/><h2>Transactions<br/><span>{length}</span></h2>
 				<br/><h2>Size in Bytes<br/><span>{block.size}</span></h2>
 				<button onClick={() => this._addWebAppAction(3)}>update block</button><br/><br/><br/>

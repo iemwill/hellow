@@ -11,9 +11,9 @@ class Opener extends Component {
     return (
       <section id="opener">
         <div className="opener">
-          <h3>{this.props.ipp}<br/>Your visit could've been "cookied" anonymized on the Ethereum Blockchain 
-          <a href="https://ropsten.etherscan.io/address/0xd2cf9f677f361f23c576825978338c4a21291646" 
-            target='_blank' rel='noreferrer' onClick={() => this._addWebAppAction(1)} > Ropsten.
+          <h3>{this.props.ipp}<br/>Your visit could've been "cookied" anonymized on the Polkadot Parachain 
+          <a href="https://moonbase.moonscan.io/address/0x48bfb22ebb07d897ceb7b7328400ba3f1651f0ae" 
+            target='_blank' rel='noreferrer' onClick={() => this._addWebAppAction(1)} > Moonbase.
           </a></h3>
           <br/><br/>
           <h1>
