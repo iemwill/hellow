@@ -25,12 +25,18 @@ class EthereumDataMin extends Component {
   		}
 	}
   _addWebAppAction (buttonID) {
-    addWebAppAction(this.props.ip, buttonID, this.props.sessionID);      
-	}
-	render() {
-		if (this.state.count == 0) {
-			this.getLatestBlock();
-		}
+    if (buttonID == 3) {
+      this.getLatestBlock();
+      addWebAppAction(this.props.ip, buttonID, this.props.sessionID);
+    }
+    else
+      addWebAppAction(this.props.ip, buttonID, this.props.sessionID);
+  }
+  render() {
+    if (this.state.count == 0) {
+    this.getLatestBlock();
+    this.state.count = 1;
+  }
 		const block = this.state.latestBlock;
 		const length = this.state.length;
 	return (
