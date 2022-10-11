@@ -13,39 +13,46 @@ class EthereumDataMin extends Component {
 	async getLatestBlock() {
   		try {
 		    const web3 = new Web3(
-	    		new Web3.providers.HttpProvider(process.env.REACT_APP_API_KEY2)
+	    		new Web3.providers.HttpProvider('https://rpc.api.moonbase.moonbeam.network')
 	  		);
 	  		const latestBlock = await web3.eth.getBlock('latest');
+	  		console.log('LATEST BLOCK: ', latestBlock);
 	  		const length = latestBlock.transactions.length;
 	  		const count = 1;
-	  		console.log('CURRENT BLOCK: ', latestBlock);
 	  		this.setState({latestBlock, length, count});
   		} catch (error){
   			console.log('FAILED TO LOAD BLOCK: ', error);
   		}
 	}
   _addWebAppAction (buttonID) {
-    addWebAppAction(this.props.ip, buttonID, this.props.sessionID);      
+  	if (buttonID == 3) {
+  		this.getLatestBlock();
+  		addWebAppAction(this.props.ip, buttonID, this.props.sessionID);
+  	}
+  	else
+  		addWebAppAction(this.props.ip, buttonID, this.props.sessionID);
+          
 	}
 	render() {
 		if (this.state.count == 0) {
 			this.getLatestBlock();
+			this.state.count = 1;
 		}
 		const block = this.state.latestBlock;
 		const length = this.state.length;
 	return (
 		<section id="ethereumDataMin">
 			<div className="ethereumDataMin">
-				<a href='https://etherscan.io/blocks' target="_blank" rel='noreferrer' onClick={() => this._addWebAppAction(2)}>
-				<button>ethereum data</button>
+				<a href='https://moonbase.moonscan.io/blocks' target="_blank" rel='noreferrer' onClick={() => this._addWebAppAction(2)}>
+				<button>moonbase data</button>
 				</a>
 				<br/><h2>Blocknumber<br/><span>{block.number}</span></h2>
-				<br/><h2>Fee Recipient<br/><span>{block.miner}</span></h2>
+				<br/><h2>Collator<br/><span>{block.miner}</span></h2>
 				<br/><h2>Transactions<br/><span>{length}</span></h2>
 				<br/><h2>Size in Bytes<br/><span>{block.size}</span></h2>
 				<button onClick={() => this._addWebAppAction(3)}>update block</button><br/><br/><br/>
 				<h3>To verify the above visualized data take a look at the ethereum blockchain explorer.<br/>
-				A tool to read data from the ethereum blockchain via the browser.
+				A tool to read data from the polkadot-moonbase blockchain via the browser.
 				<br/>
 				(button on top)
 				</h3>
