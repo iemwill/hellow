@@ -18,7 +18,7 @@ class Contact extends Component {
     return (
       <section id="contact">
         <div className="contact">
-          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+          <br/><br/><br/><br/><br/><br/>
           <a href="https://wa.me/message/AAIDX7NDPAJ3J1" target="_blank" rel="noreferrer"
             onClick={() => this._addWebAppAction(4)}><FaWhatsapp/></a>
           <a href="https://twitter.com/iem_wll" target="_blank" rel="noreferrer"
@@ -29,7 +29,7 @@ class Contact extends Component {
             onClick={() => this._addWebAppAction(7)}><FaTelegram/></a>
           <a href="https://linkedin.com/in/w-ll" target="_blank" rel="noreferrer"
             onClick={() => this._addWebAppAction(8)}><FaLinkedin/></a>
-          <br/><br/><br/><br/><br/><br/>
+          <br/><br/><br/><br/><br/><br/><br/>
         </div>
         <div id="c0n74c7">
           <a id="bitcoin" href="mailto:hello@laubenheimer.eu" 
@@ -38,12 +38,12 @@ class Contact extends Component {
             onClick={() => this._addWebAppAction(9)}> & </a>
           <a id="ethereum" href="mailto:hello@laubenheimer.eu"
             onClick={() => this._addWebAppAction(9)}>Consultent</a>
-          <br/><br/><br/><br/><br/><br/><br/>
+          <br/><br/><br/><br/><br/><br/><br/><br/>
           <br/><br/><a id="bitcoin" href="bitcoin:bc1qmupy24nxjr822smvq8a2x33vd5tc6dth56p897"
             onClick={() => this._addWebAppAction(10)}>bc1qmupy24nxjr822smvq8a2x33vd5tc6dth56p897</a>
           <br/><br/><br/><a id="ethereum" href="ethereum:0xc3577e1BF219c041306dDa4689a1D1Fb531329A0"
             onClick={() => this._addWebAppAction(11)}>0xc3577e1BF219c041306dDa4689a1D1Fb531329A0</a>
-          <br/><br/><br/><br/>
+          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
           <hr/><br/>Testnet - ERC20-Token <br/><br/><a href="https://moonbase.moonscan.io/address/0x2cbf9e49f920a0e46a4f692c156d1a48f17580a3" target="_blank" rel="noreferrer"
             onClick={() => this._addWebAppAction(12)}>0x2cbf9e49f920a0e46a4f692c156d1a48f17580a3</a>
           <br/><br/>Testnet - ERC721-NFT <br/><br/><a href="https://moonbase.moonscan.io/address/0x28312e77537805ff9b00c492e675c9711ef314ce" target="_blank" rel="noreferrer"
