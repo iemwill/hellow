@@ -58,7 +58,7 @@ class Contact extends Component {
           To see how and where the data is collected click the Polkadot Moonbase link on top.<br/>
           Thank you for visiting this Application !
         </div>
-  	  </section>
+      </section>
     );
   }
 }
