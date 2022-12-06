@@ -3,16 +3,14 @@
   "description": "An open source 'Hello Web3 World'-Application (dApp) also used for promotion and education.",
   "repository": "https://github.com/iemwill/hellow",
   "license": "MITlicensev0.1",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "private": true,
   "homepage": "https://laubenheimer.eu",
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
-    "react-native-public-ip": "^1.0.2",
     "react-scripts": "^4.0.3",
-    "sha256": "^0.2.0",
     "web3": "^1.7.0"
   },
   "overrides": {
