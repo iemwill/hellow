@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import addWebAppAction from '../Backend/Cookies/addWebAppAction';
 class Opener extends Component {
@@ -27,5 +26,6 @@ class Opener extends Component {
       </section>
     );
   }
+
 }
 export default Opener;

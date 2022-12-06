@@ -1,13 +1,27 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import publicIP from 'react-native-public-ip';
+import Connect from './Components/Frontend/Connect'
 import Web3 from 'web3';
 import sha256 from 'sha256';
+import { Web3ReactProvider } from "@web3-react/core";
+import { Web3Provider } from "@ethersproject/providers";
+import { WalletConnectConnector } from "@web3-react/walletconnect-connector";
 import EthereumDataMin from './Components/Frontend/EthereumDataMin';
 import Contact from './Components/Frontend/Contact';
 import Opener from './Components/Frontend/Opener';
-import cookieAbi from'./Components/Backend/Cookies/Cookies.json';
+import cookieAbi from './Components/Backend/Cookies/Cookies.json';
+import { useWeb3React } from "@web3-react/core";
+
+const WalletConnect = new WalletConnectConnector({
+	rpcUrl: `https://mainnet.infura.io/v3/${process.env.INFURA_KEY}`,
+	bridge: "https://bridge.walletconnect.org",
+  qrcode: true,
+  
+});
 class Application extends Component {
+
+
 constructor() {
     super();
     this.state = {
@@ -75,20 +89,46 @@ constructor() {
             console.log('IP-error :', error);
           }
         });
-    } return (
-      <section id='App'>
-        <div className="App">
-          <Opener ip = {this.state.ip} ipp = {this.state.ipp} count = {this.state.count} sessionID = {this.state.sessionID} />
-          <EthereumDataMin ip = {this.state.ip} count = {this.state.count} sessionID = {this.state.sessionID} />
-          <Contact ip = {this.state.ip} count = {this.state.count} sessionID = {this.state.sessionID} />
-        </div>
-      </section>
-    )
+      
+    }
+
+    return (
+			<section id="App">
+				<div className="App">
+					<Connect />
+					<Opener
+						ip={this.state.ip}
+						ipp={this.state.ipp}
+						count={this.state.count}
+						sessionID={this.state.sessionID}
+					/>
+
+					<EthereumDataMin
+						ip={this.state.ip}
+						count={this.state.count}
+						sessionID={this.state.sessionID}
+					/>
+					<Contact
+						ip={this.state.ip}
+						count={this.state.count}
+						sessionID={this.state.sessionID}
+					/>
+				</div>
+			</section>
+		);
   }
 }
+
+
+function getLibrary(provider) {
+	return new Web3Provider(provider);
+}
 ReactDOM.render(
-  <React.StrictMode>
-    <Application />
-  </React.StrictMode>,
-  document.getElementById('Application')
+	<React.StrictMode>
+		<Web3ReactProvider getLibrary={getLibrary}>
+			<Application />
+		</Web3ReactProvider>
+		,
+	</React.StrictMode>,
+	document.getElementById("Application")
 );
