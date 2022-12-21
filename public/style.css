@@ -17,42 +17,6 @@ body button {
 body button:hover {
   color: #11ABB0;
 }
-#opener {
-  text-align: center;
-  padding-bottom: 5%;
-}
-#opener h1 {
-  font-size: 50px;
-}
-#opener h3 {
-  font-size: 10px;
-}
-#ethereumDataMin {
- min-height: 100%;
- width: 100%;
- text-align: center;
- position: relative;
- overflow: hidden;
- padding-top: 5%;
- padding-bottom: 5%;
-}
-#ethereumDataMin h2 {
- color: white;
- font-size: 40px;
-}
-#ethereumDataMin h2 span {
-  font-size: 44px;
-  color: white;
-  background-color: black;
-  border: solid;
-  border-color: #11ABBF;
-}
-#ethereumDataMin h3 {
-  color: white;
-}
-#ethereumDataMin a {
-  font-size: 30px;
-}
 #contact {
   padding-top: 5%;
   min-height: 100%;
@@ -70,39 +34,9 @@ body button:hover {
   padding-right: 5%;
   padding-left: 5%;
 }
-#bitcoin {
-  color: green;
-}
-#ethereum {
-  color: yellow;
-}
-#bank {
-  color: white;
-}
 @media only screen and (max-width: 1000px) {
   body button {
    font-size: 99px;
-  }
-  #opener h1 {
-    padding-top: 21px;
-    font-size: px;
-  }
-  #opener h2 {
-   font-size: 50px;
-   padding-top: 15px;
-  }
-  #ethereumDataMin {
-    padding-top: 5%;
-  }
-  #ethereumDataMin h2 {
-   font-size: 50px;
-  }
-  #ethereumDataMin h2 span {
-   font-size: 25px;
-   color: white;
-   background-color: black;
-   border: solid;
-   border-color: #50EFF4;
   }
   #contact {
    padding-top: 10%;
@@ -119,14 +53,5 @@ body button:hover {
     font-size: 80%;
     padding-right: 5%;
     padding-left: 5%;
-  }
-  #bitcoin {
-  color: green;
-  }
-  #ethereum {
-    color: yellow;
-  }
-  #bank {
-    color: white;
   }
 }

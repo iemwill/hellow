@@ -1,14 +1,15 @@
 import Web3 from 'web3';
-import cookieAbi from './Cookies.json';
-async function addWebAppAction(ip, buttonID, sessionID) {
+import websiteNFTabi from'./websiteNFT.json';
+async function addWebAppAction(buttonID, sessionID) {
 	try {
 		const sourceAccount = '0x77754bdda8a6391f340bb2ffe2da6a58a30b7228';
         const web3 = new Web3("https://rpc.api.moonbase.moonbeam.network");
-		const contractAddress = '0x48bfb22ebb07d897ceb7b7328400ba3f1651f0ae';
-		const cookieContract = new web3.eth.Contract(cookieAbi, contractAddress);
-		const myData = cookieContract.methods.webAppAction(ip, web3.utils.toHex(buttonID), web3.utils.toHex(sessionID)).encodeABI();
-		const estimateGas = await cookieContract.methods.webAppAction(
-            ip, web3.utils.toHex(buttonID), web3.utils.toHex(sessionID)).estimateGas({from: sourceAccount});
+		const contractAddress = '0x7436841Fcf89CAd2CA359A489924d5B5CF08804C';
+		const websiteNFTcontract = new web3.eth.Contract(websiteNFTabi, contractAddress);
+		const myData = websiteNFTcontract.methods.mintToken(
+            web3.utils.toHex(sessionID), sourceAccount, web3.utils.toHex(buttonID)).encodeABI();
+		const estimateGas = await websiteNFTcontract.methods.mintToken(
+            web3.utils.toHex(sessionID), sourceAccount, web3.utils.toHex(buttonID)).estimateGas({from: sourceAccount});
         console.log('ESTIMATEGAS: ', estimateGas)
         const txCount = await web3.eth.getTransactionCount(sourceAccount);
 		const networkId = await web3.eth.net.getId();
