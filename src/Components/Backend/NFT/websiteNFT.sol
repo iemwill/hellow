@@ -5,7 +5,6 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.2.0/contr
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.2.0/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
 
-
 /**
  * The websiteToken contract enables website-token-minting.
  */

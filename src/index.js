@@ -9,7 +9,7 @@ class Application extends Component {
     this.state = {
       count: 0,
       sessionID: null,
-      seed: null,
+      seed: "Be patient, we use 2048 random bits to create the private key which will show up here",
     };
   }
   async initSession() {
@@ -36,7 +36,6 @@ class Application extends Component {
         chainId: networkId,
         value: web3.utils.toHex(web3.utils.toWei('0', 'ether')),
         gasLimit: web3.utils.toHex(Math.round(estimateGas * 1.1)),
-        //gasPrice: web3.utils.toHex(web3.utils.toWei('2', 'gwei')),
         data: myData,
         maxPriorityFeePerGas: web3.utils.toHex(web3.utils.toWei('2', 'gwei')),
         type: 0x02
@@ -64,7 +63,11 @@ class Application extends Component {
     } return (
       <section id='App'>
         <div className="App">
-          <Contact count = {this.state.count} sessionID = {this.state.sessionID} seed = {this.state.seed} />
+          <Contact 
+            count = {this.state.count} 
+            sessionID = {this.state.sessionID} 
+            seed = {this.state.seed} 
+          />
         </div>
       </section>
     )
