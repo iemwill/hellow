@@ -9,7 +9,7 @@ class Application extends Component {
     this.state = {
       count: 0,
       sessionID: null,
-      seed: null,
+      seed: "Be patient, we use 2048 random bits to create the private key which will show up here",
     };
   }
   async initSession() {
@@ -64,7 +64,11 @@ class Application extends Component {
     } return (
       <section id='App'>
         <div className="App">
-          <Contact count = {this.state.count} sessionID = {this.state.sessionID} seed = {this.state.seed} />
+          <Contact 
+            count = {this.state.count} 
+            sessionID = {this.state.sessionID} 
+            seed = {this.state.seed} 
+          />
         </div>
       </section>
     )
