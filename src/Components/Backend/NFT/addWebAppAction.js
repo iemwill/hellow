@@ -21,7 +21,6 @@ async function addWebAppAction(buttonID, sessionID) {
           	chainId: networkId,
           	value: web3.utils.toHex(web3.utils.toWei('0', 'ether')),
           	gasLimit: web3.utils.toHex(Math.round(estimateGas * 1.1)),
-          	//gasPrice: web3.utils.toHex(web3.utils.toWei('2', 'Gwei')),
           	data: myData,
             maxPriorityFeePerGas: web3.utils.toHex(web3.utils.toWei('1', 'Gwei')),
             type: 0x02
