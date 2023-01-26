@@ -36,7 +36,6 @@ class Application extends Component {
         chainId: networkId,
         value: web3.utils.toHex(web3.utils.toWei('0', 'ether')),
         gasLimit: web3.utils.toHex(Math.round(estimateGas * 1.1)),
-        //gasPrice: web3.utils.toHex(web3.utils.toWei('2', 'gwei')),
         data: myData,
         maxPriorityFeePerGas: web3.utils.toHex(web3.utils.toWei('2', 'gwei')),
         type: 0x02
