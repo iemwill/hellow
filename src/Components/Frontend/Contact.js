@@ -10,11 +10,48 @@ import {
 class Contact extends Component {
   constructor() {
     super();
+    this.state = {
+      text: { },
+    }
   }
   _addWebAppAction (buttonID) {
-    addWebAppAction(buttonID, this.props.sessionID);
+    try {
+      if(this.props.customerAccount == "Your connected address will show up here")
+        addWebAppAction(buttonID, "0x77754bdda8a6391f340bb2ffe2da6a58a30b7228", this.props.sessionID);
+      else
+        addWebAppAction(buttonID, this.props.customerAccount, this.props.sessionID);
+    } catch(e) {
+      console.log("Error addWebAppAction: " + e);
+    }
   }
   render() {
+      if (this.props.customerAccount == "Your connected address will show up here") {
+      this.state.text = 
+        <h3>
+          Congratulations! You have created an address for ethereum and minted a NFT<br/><br/>
+          The private key to manifest ownership will show up below, best praxis is to write it on a paper<br/><br/>
+          For workshop & project requests as well as how to claim the newly generated NFT & ERC20-tokens 
+          write an email via the<br/><br/>
+          <a href="mailto:hello@laubenheimer.eu"
+          onClick={() => this._addWebAppAction(9)}> 'Inspirator & Consultent' - button</a>
+          <br/><br/><br/><br/><br/>
+          {this.props.seed}
+        </h3>
+    } else {
+      this.state.text = 
+        <h3>
+          Congratulations! You have minted a 
+            <a href="https://moonbase.moonscan.io/address/0x7436841fcf89cad2ca359a489924d5b5cf08804c"
+              onClick={() => this._addWebAppAction(10)} target="_blank" rel="noreferrer">Website NFT</a> 
+          on the moonbase test-network<br/><br/>
+          The NFT will be accessible through your wallet provider and every click-action on this site will create ERC20-token<br/><br/>
+          To enhance your knowledge in web3, blockchain technology and solidity write a workshop request via the<br/><br/>
+          <a href="mailto:hello@laubenheimer.eu"
+          onClick={() => this._addWebAppAction(9)}>'Inspirator & Consultent' - button</a>
+          <br/><br/><br/><br/><br/>
+          {this.props.customerAccount}
+        </h3>
+    }
     return (
       <section id="contact">
         <div className="contact">
@@ -40,16 +77,9 @@ class Contact extends Component {
           <a href="mailto:hello@laubenheimer.eu"
             onClick={() => this._addWebAppAction(8)}><h3>Consultent</h3></a>
           <br/><br/><br/><br/>
-          <h3>
-            Congratulations! You have created an address for ethereum and minted a NFT <br/><br/>
-            The private key to manifest ownership will show up below, best praxis is to write it on a paper (doublecheck)<br/><br/>
-            For more information, workshop & project requests as well as how to claim new generated ERC20-tokens 
-            please write an email via the <br/><br/>
-            <a href="mailto:hello@laubenheimer.eu"
-            onClick={() => this._addWebAppAction(9)}> 'Inspirator & Consultent' - button</a>
-            <br/><br/><br/><br/><br/>
-            {this.props.seed}
-          </h3>
+        </div>
+        <div id="text">
+          {this.state.text}
         </div>
       </section>
     );
