@@ -7,13 +7,6 @@ body a {
   text-decoration: none;
   color:#11ABB0;
 }
-body button {
-  font-size: 50px;
-  color: white;
-  background-color: black;
-  cursor: pointer;
-  text-transform: uppercase
-}
 body button:hover {
   color: #11ABB0;
 }
@@ -34,24 +27,14 @@ body button:hover {
   padding-right: 5%;
   padding-left: 5%;
 }
+#text a {
+  font-size: initial;
+}
 @media only screen and (max-width: 1000px) {
-  body button {
-   font-size: 99px;
-  }
   #contact {
    padding-top: 10%;
    text-align: center;
    margin-bottom: 3%;
    min-height: 100%;
-  }
-  #contact a {
-    font-size: 50px;
-    padding-right: 21px;
-    padding-left: 21px;
-  }
-  #c0n74c7 a {
-    font-size: 80%;
-    padding-right: 5%;
-    padding-left: 5%;
   }
 }
