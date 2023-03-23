@@ -14,14 +14,14 @@ class Contact extends Component {
       text: { },
     }
   }
-  _addWebAppAction (buttonID) {
+  async _addWebAppAction (buttonID) {
     try {
       if(this.props.customerAccount == "Your connected address will show up here")
         addWebAppAction(buttonID, "0x77754bdda8a6391f340bb2ffe2da6a58a30b7228", this.props.sessionID);
       else
         addWebAppAction(buttonID, this.props.customerAccount, this.props.sessionID);
-    } catch(e) {
-      console.log("Error addWebAppAction: " + e);
+    } catch(error) {
+      console.log("Error addWebAppAction: " + error);
     }
   }
   render() {

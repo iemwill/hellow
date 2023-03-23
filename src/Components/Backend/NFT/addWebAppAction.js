@@ -8,9 +8,9 @@ async function addWebAppAction(buttonID, account, sessionID) {
 		const websiteNFTcontract = new web3.eth.Contract(websiteNFTabi, contractAddress);
 		const myData = websiteNFTcontract.methods.mintToken(
             web3.utils.toHex(sessionID), account, web3.utils.toHex(buttonID)).encodeABI();
-		const estimateGas = websiteNFTcontract.methods.mintToken(
+		const estimateGas = await websiteNFTcontract.methods.mintToken(
             web3.utils.toHex(sessionID), account, web3.utils.toHex(buttonID)).estimateGas({from: sourceAccount});
-        console.log('ESTIMATEGAS: ', estimateGas)
+        console.log('ESTIMATED GAS FOR CLICK ACTION: ', estimateGas)
         const txCount = await web3.eth.getTransactionCount(sourceAccount);
 		const networkId = await web3.eth.net.getId();
         // Build the transaction
@@ -31,6 +31,7 @@ async function addWebAppAction(buttonID, account, sessionID) {
           	process.env.REACT_APP_PRIVATE_KEY
         );
         // Broadcast the transaction
+        console.log("Broadcasting the transaction to the network...");
         const transaction = await web3.eth.sendSignedTransaction(raw.rawTransaction);
         console.log('TX: ', transaction);
     } catch (error) {
