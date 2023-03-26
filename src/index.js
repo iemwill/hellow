@@ -11,15 +11,16 @@ class Application extends Component {
       sessionID: null,
       seed: "Be patient, we use 2048 random bits to create the private key which will show up here, if you have not connected your wallet",
       customerAccount: "Your connected address will show up here",
+      userAccount: "To be computed",
       txObject: { },
     };
   }
   async initSession() {
     try {
       this.state.count = 1;
-      const sourceAccount = '0x77754bdda8a6391f340bb2ffe2da6a58a30b7228';
+      const sourceAccount = '0x81EFbfd5853a0831031222dB1C93e1FA914A34e3';
       const web3 = new Web3("https://rpc.api.moonbase.moonbeam.network");
-      const contractAddress = '0x7436841Fcf89CAd2CA359A489924d5B5CF08804C';
+      const contractAddress = '0xc3e13D5E3e8fFa7E601f657Fd690AF70E224d1a5';
       const websiteNFTcontract = new web3.eth.Contract(websiteNFTabi, contractAddress);
       const tokenID = await websiteNFTcontract.methods.NFTsCount().call();
       //Use of existing web3 wallet
@@ -28,7 +29,7 @@ class Application extends Component {
         const account = await window.ethereum.request({method:'eth_requestAccounts'});
         console.log("Connected Account: " + account[0]);
         const myData = websiteNFTcontract.methods.mintNFT(
-          sourceAccount, web3.utils.toHex(tokenID), "https://laubenheimer.eu/NFTs/" + tokenID, account[0]).encodeABI();
+          sourceAccount, tokenID, "https://laubenheimer.eu/NFTs/" + tokenID, account[0]).encodeABI();
         const estimateGas = await websiteNFTcontract.methods.mintNFT(
           sourceAccount, tokenID, "https://laubenheimer.eu/NFTs/" + tokenID, account[0]).estimateGas({from: sourceAccount});
         console.log('ESTIMATED GAS WITH EXISTING ACCOUNT: ', estimateGas);
@@ -51,9 +52,9 @@ class Application extends Component {
       //Create web3 wallet/account
       else {
         const account = web3.eth.accounts.create(web3.utils.randomHex(2048));
-        console.log("Created Account 1: " + account);
+        console.log("Created Account 1: " + account.address);
         const myData = websiteNFTcontract.methods.mintNFT(
-        sourceAccount, web3.utils.toHex(tokenID), "https://laubenheimer.eu/NFTs/" + tokenID, account.address).encodeABI();
+        sourceAccount, tokenID, "https://laubenheimer.eu/NFTs/" + tokenID, account.address).encodeABI();
         const estimateGas = await websiteNFTcontract.methods.mintNFT(
         sourceAccount, tokenID, "https://laubenheimer.eu/NFTs/" + tokenID, account.address).estimateGas({from: sourceAccount});
         console.log('ESTIMATED GAS WITH CREATED ACCOUNT: ', estimateGas);
@@ -71,7 +72,7 @@ class Application extends Component {
           maxPriorityFeePerGas: web3.utils.toHex(web3.utils.toWei('2', 'gwei')),
           type: 0x02
         };
-        this.setState({sessionID: tokenID, seed: account.privateKey, txObject: txObject});
+        this.setState({sessionID: tokenID, seed: account.privateKey, userAccount: account.address, txObject: txObject});
       }
       // Sign the transaction
       const raw = await web3.eth.accounts.signTransaction(
@@ -87,14 +88,15 @@ class Application extends Component {
     catch (error) {
       try {
         console.log('Initialization failed 1: ', error);
-        const sourceAccount = '0x77754bdda8a6391f340bb2ffe2da6a58a30b7228';
+        const sourceAccount = '0x81EFbfd5853a0831031222dB1C93e1FA914A34e3';
         const web3 = new Web3("https://rpc.api.moonbase.moonbeam.network");
-        const contractAddress = '0x7436841Fcf89CAd2CA359A489924d5B5CF08804C';
+        const contractAddress = '0xc3e13D5E3e8fFa7E601f657Fd690AF70E224d1a5';
         const account = web3.eth.accounts.create(web3.utils.randomHex(2048));
+        console.log("Created Account 1: " + account.address);
         const websiteNFTcontract = new web3.eth.Contract(websiteNFTabi, contractAddress);
         const tokenID = await websiteNFTcontract.methods.NFTsCount().call();
         const myData = websiteNFTcontract.methods.mintNFT(
-        sourceAccount, web3.utils.toHex(tokenID), "https://laubenheimer.eu/NFTs/" + tokenID, account.address).encodeABI();
+        sourceAccount, tokenID, "https://laubenheimer.eu/NFTs/" + tokenID, account.address).encodeABI();
         const estimateGas = await websiteNFTcontract.methods.mintNFT(
         sourceAccount, tokenID, "https://laubenheimer.eu/NFTs/" + tokenID, account.address).estimateGas({from: sourceAccount});
         console.log('ESTIMATED GAS WITH CREATED ACCOUNT: ', estimateGas);
@@ -112,7 +114,7 @@ class Application extends Component {
           maxPriorityFeePerGas: web3.utils.toHex(web3.utils.toWei('2', 'gwei')),
           type: 0x02
         };
-        this.setState({sessionID: tokenID, seed: account.privateKey, txObject: txObject});
+        this.setState({sessionID: tokenID, seed: account.privateKey, userAccount: account.address, txObject: txObject});
         // Sign the transaction
         const raw = await web3.eth.accounts.signTransaction(
           this.state.txObject,
@@ -140,7 +142,7 @@ class Application extends Component {
             sessionID = {this.state.sessionID} 
             seed = {this.state.seed}
             customerAccount = {this.state.customerAccount}
-            txQueue = {this.state.txQueue}
+            userAccount = {this.state.userAccount}
           />
         </div>
       </section>

@@ -23,7 +23,7 @@ contract websiteToken is ERC20 {
 
 
 /**
- * The websiteNFT contract creates one NFT for each visit of a website.
+ * The websiteNFT contract creates one NFT for each visit of a website and creates token through actions.
  */
 contract websiteNFT is ERC721URIStorage {
   address private owner;
@@ -47,13 +47,20 @@ contract websiteNFT is ERC721URIStorage {
     _safeMint(to, tokenId);
     approve(initiator, tokenId);
     NFTsCount += 1;
-    mintToken(tokenId, owner, 10);
+    mintToken(tokenId, owner, initiator, 10);
     _setTokenURI(tokenId, tokenURI);
   }
   function transferNFTFrom(address from, address to, uint256 tokenId) public virtual {
     transferFrom(from, to, tokenId);
   }
   //Token-functions
+  function mintToken(uint256 tokenId, address to, address initiator, uint256 amount) public virtual {
+    require(msg.sender == owner, "You are not allowed to call this function.");
+    require(tokenId < NFTsCount, "You try to mint token for an tokenId not existing.");
+    theWebsiteToken.mintToken(to, amount);
+    theWebsiteToken.approve(initiator, amount);
+    NFTtoTokenMapping[tokenId] += amount;
+  }
   function mintToken(uint256 tokenId, address to, uint256 amount) public virtual {
     require(msg.sender == owner, "You are not allowed to call this function.");
     require(tokenId < NFTsCount, "You try to mint token for an tokenId not existing.");
@@ -66,18 +73,18 @@ contract websiteNFT is ERC721URIStorage {
   function transferToken(uint256 tokenId, address recipient, uint256 amount) public virtual {
     require(msg.sender == owner, "You are not allowed to call this function.");
     require(NFTtoTokenMapping[tokenId] >= amount, "Not enough funds.");
-    theWebsiteToken.transfer(recipient, amount * 10 ** 18);
+    theWebsiteToken.transfer(recipient, amount);
     NFTtoTokenMapping[tokenId] -= amount;
   }
   function approveToken(uint256 tokenId, address spender, uint256 amount) public virtual {
     require(msg.sender == owner, "You are not allowed to call this function.");
     require(NFTtoTokenMapping[tokenId] >= amount, "Not enough funds.");
-    theWebsiteToken.approve(spender, amount * 10 ** 18);
+    theWebsiteToken.approve(spender, amount);
   }
   function transferTokenFrom(uint256 tokenId, address sender, address recipient, uint256 amount) public virtual {
     require(msg.sender == owner, "You are not allowed to call this function.");
     require(NFTtoTokenMapping[tokenId] >= amount, "Not enough funds.");
-    theWebsiteToken.transferFrom(sender, recipient, amount * 10 ** 18);
+    theWebsiteToken.transferFrom(sender, recipient, amount);
     NFTtoTokenMapping[tokenId] -= amount;
   }
 }

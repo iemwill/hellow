@@ -3,7 +3,7 @@
   "description": "An open source 'Hello Web3 World'-Application (dApp) also used for promotion and education. Let's symbiose!",
   "repository": "https://github.com/iemwill/hellow",
   "license": "MITlicensev0.1",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "private": true,
   "homepage": "https://laubenheimer.eu",
   "dependencies": {
