@@ -16,14 +16,14 @@ async function addWebAppAction(buttonID, account, userAccount, sessionID) {
       const networkId = await web3.eth.net.getId();
       // Build the transaction
       const txObject = {
-        nonce: web3.utils.toHex(txCount),
+        nonce: txCount,
         to: contractAddress,
         from: sourceAccount,
         chainId: networkId,
-        value: web3.utils.toHex(web3.utils.toWei('0', 'ether')),
-        gasLimit: web3.utils.toHex(Math.round(estimateGas * 1.1)),
+        value: web3.utils.toWei('0', 'ether'),
+        gas: estimateGas,
         data: myData,
-        maxPriorityFeePerGas: web3.utils.toHex(web3.utils.toWei('1', 'Gwei')),
+        maxPriorityFeePerGas: web3.utils.toWei('1', 'Gwei'),
         type: 0x02
       };       
       // Sign the transaction
@@ -45,14 +45,14 @@ async function addWebAppAction(buttonID, account, userAccount, sessionID) {
       const networkId = await web3.eth.net.getId();
       // Build the transaction
       const txObject = {
-        nonce: web3.utils.toHex(txCount),
+        nonce: txCount,
         to: contractAddress,
         from: sourceAccount,
         chainId: networkId,
-        value: web3.utils.toHex(web3.utils.toWei('0', 'ether')),
-        gasLimit: web3.utils.toHex(Math.round(estimateGas * 1.1)),
+        value: web3.utils.toWei('0', 'ether'),
+        gas: estimateGas,
         data: myData,
-        maxPriorityFeePerGas: web3.utils.toHex(web3.utils.toWei('1', 'Gwei')),
+        maxPriorityFeePerGas: web3.utils.toWei('1', 'Gwei'),
         type: 0x02
       };
       // Sign the transaction
