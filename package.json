@@ -1,27 +1,19 @@
 {
   "name": "hellow",
-  "description": "An open source 'Hello Web3 World'-Application (dApp) also used for promotion and education. Let's symbiose!",
+  "description": "This web3-Site (www site) is the future of the internet. The backend interacts with program code published on a blockchain and generates individual ERC721 & ERC20 Token. We are glad to build a better future, day by day, thankfull for every feedback and if you want to donate us send us some value via 3QHgobkrPPyz6SJe3WVwZvazj5e1u4RVcf or 0x7F0EFFEe4bf10B3e3E5BdA022289508f367c7eDa. Let's symbiose!",
   "repository": "https://github.com/iemwill/hellow",
   "license": "MITlicensev0.1",
   "version": "0.3.3",
   "private": true,
   "homepage": "https://laubenheimer.eu",
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-icons": "^4.2.0",
-    "react-scripts": "^4.0.3",
-    "web3": "^1.7.0"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
+    "web3": "^1.9.0"
   },
-  "overrides": {
-    "simple-get": "4.0.1",
-    "postcss": "8.4.6",
-    "nth-check": "2.0.1",
-    "ansi-regex": "5.0.1",
-    "glob-parent": "6.0.2",
-    "browserslist": "4.19.1",
-    "immer": "9.0.12",
-    "node-forge": "1.0.0"
+  "devDependencies": {
+    "react-scripts": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

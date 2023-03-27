@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import addWebAppAction from '../Backend/NFT/addWebAppAction';
 import { 
   FaLinkedin,
