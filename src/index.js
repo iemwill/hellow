@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import Web3 from 'web3';
 import Contact from './Components/Frontend/Contact';
 import websiteNFTabi from'./Components/Backend/NFT/websiteNFT.json';
-class Application extends Component {
+class DecentralizedApplication extends Component {
   constructor() {
     super();
     this.state = {
@@ -145,8 +145,8 @@ class Application extends Component {
     if (this.state.count == 0)
         this.initSession();
     return (
-      <section id='App'>
-        <div className="App">
+      <section id='dApp'>
+        <div className="dApp">
           <Contact 
             count = {this.state.count} 
             sessionID = {this.state.sessionID} 
@@ -159,5 +159,5 @@ class Application extends Component {
     );
   }
 }
-const root = createRoot(document.getElementById('Application'));
-root.render(<Application />);
+const root = createRoot(document.getElementById('DecentralizedApplication'));
+root.render(<DecentralizedApplication />);
