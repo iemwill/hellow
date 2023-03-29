@@ -11,6 +11,8 @@ Contributors are welcome, go through the contribute section and lets have a chat
 
 ## Requirements
 
+Development requirements are node & npm. Our version setup for successfull runs:
+
 - node v16.13.2
 - npm 8.4.0
 
