@@ -33,4 +33,5 @@ After a successful installation run:
 2. Make sure to:
     - Fork the repository
     - Checkout the develop branch
-3. Code, test and create a pullrequest.
+    - Create a new develop-IssueName breanch
+3. Code, test and create a pullrequest to ~iemwill/hellow/origin/develop.
