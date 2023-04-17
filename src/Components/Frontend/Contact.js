@@ -48,7 +48,7 @@ class Contact extends Component {
           The NFT will be accessible through your wallet provider. Every click-action on this site will create ERC20-token<br/><br/>
           To enhance & exchange your knowledge in web3, blockchain technology, solidity and for project requests contact us via the<br/><br/>
           <a href="mailto:hello@laubenheimer.eu"
-          onClick={() => this._addWebAppAction(6)}>'Inspirator & Consultent' - button</a>
+          onClick={() => this._addWebAppAction(8)}>'Inspirator & Consultent' - button</a>
           <br/><br/><br/>
           {this.props.customerAccount}
         </h3>
@@ -70,7 +70,7 @@ class Contact extends Component {
         </div>
         <div id="c0n74c7">
           <a href="mailto:hello@laubenheimer.eu" 
-            onClick={() => this._addWebAppAction(6)}><h3>Inspirator<br/>&<br/>Consultent</h3></a>
+            onClick={() => this._addWebAppAction(9)}><h3>Inspirator<br/>&<br/>Consultent</h3></a>
         </div>
         <div id="text">
           {this.state.text}
