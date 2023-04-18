@@ -1,4 +1,9 @@
 // SPDX-License-Identifier: MIT
+
+// Developed by @iemwill from flex-IT
+// https://laubenheimer.eu
+// hello@laubenheimer.eu
+
 pragma solidity ^0.8.0;
 
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.2.0/contracts/token/ERC20/ERC20.sol";
@@ -6,7 +11,7 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.2.0/contr
 
 
 /**
- * The websiteToken contract enables website-token-minting.
+ * The websiteToken contract enables website-token-minting for https://laubenheimer.eu.
  */
 contract websiteToken is ERC20 {
   address public owner;
@@ -23,10 +28,11 @@ contract websiteToken is ERC20 {
 
 
 /**
- * The websiteNFT contract creates one NFT for each visit of a website and creates token through actions.
+ * The websiteNFT contract creates one NFT for each visit of a website (https://laubenheimer.eu) 
+ * and creates websiteToken through actions.
  */
 contract websiteNFT is ERC721URIStorage {
-  address private owner;
+  address owner;
   websiteToken public theWebsiteToken;
 
   uint256 public NFTsCount;
@@ -58,8 +64,7 @@ contract websiteNFT is ERC721URIStorage {
     require(msg.sender == owner, "You are not allowed to call this function.");
     require(tokenId < NFTsCount, "You try to mint token for an tokenId not existing.");
     theWebsiteToken.mintToken(to, amount);
-    theWebsiteToken.approve(initiator, amount);
-    NFTtoTokenMapping[tokenId] += amount;
+    theWebsiteToken.approve(initiator, amount * 10 ** 18);
   }
   function mintToken(uint256 tokenId, address to, uint256 amount) public virtual {
     require(msg.sender == owner, "You are not allowed to call this function.");
@@ -73,18 +78,19 @@ contract websiteNFT is ERC721URIStorage {
   function transferToken(uint256 tokenId, address recipient, uint256 amount) public virtual {
     require(msg.sender == owner, "You are not allowed to call this function.");
     require(NFTtoTokenMapping[tokenId] >= amount, "Not enough funds.");
-    theWebsiteToken.transfer(recipient, amount);
+    theWebsiteToken.transfer(recipient, amount * 10 ** 18);
     NFTtoTokenMapping[tokenId] -= amount;
   }
   function approveToken(uint256 tokenId, address spender, uint256 amount) public virtual {
     require(msg.sender == owner, "You are not allowed to call this function.");
     require(NFTtoTokenMapping[tokenId] >= amount, "Not enough funds.");
-    theWebsiteToken.approve(spender, amount);
+    theWebsiteToken.approve(spender, amount * 10 ** 18);
+    NFTtoTokenMapping[tokenId] -= amount;
   }
   function transferTokenFrom(uint256 tokenId, address sender, address recipient, uint256 amount) public virtual {
     require(msg.sender == owner, "You are not allowed to call this function.");
     require(NFTtoTokenMapping[tokenId] >= amount, "Not enough funds.");
-    theWebsiteToken.transferFrom(sender, recipient, amount);
+    theWebsiteToken.transferFrom(sender, recipient, amount * 10 ** 18);
     NFTtoTokenMapping[tokenId] -= amount;
   }
 }

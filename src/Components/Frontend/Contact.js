@@ -42,7 +42,7 @@ class Contact extends Component {
       this.state.text = 
         <h3>
           Congratulations! You have minted a 
-            <a href="https://moonbase.moonscan.io/address/0xc3e13D5E3e8fFa7E601f657Fd690AF70E224d1a5"
+            <a href="https://moonscan.io/address/0x21ac1fBeE4491DfE92354eE1B3F2eF2D3357545c"
               onClick={() => this._addWebAppAction(7)} target="_blank" rel="noreferrer">Website NFT</a> 
           on the moonbase test-network<br/><br/>
           The NFT will be accessible through your wallet provider. Every click-action on this site will create ERC20-token<br/><br/>

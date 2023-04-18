@@ -18,8 +18,8 @@ class DecentralizedApplication extends Component {
     try {
       this.state.count = 1;
       const sourceAccount = '0x81EFbfd5853a0831031222dB1C93e1FA914A34e3';
-      const web3 = new Web3("https://rpc.api.moonbase.moonbeam.network");
-      const contractAddress = '0xc3e13D5E3e8fFa7E601f657Fd690AF70E224d1a5';
+      const web3 = new Web3("https://rpc.api.moonbeam.network");
+      const contractAddress = '0x21ac1fBeE4491DfE92354eE1B3F2eF2D3357545c';
       const websiteNFTcontract = new web3.eth.Contract(websiteNFTabi, contractAddress);
       const tokenID = await websiteNFTcontract.methods.NFTsCount().call();
       //Use of existing web3 wallet
@@ -98,8 +98,8 @@ class DecentralizedApplication extends Component {
       try {
         console.log('Initialization failed 1: ', error);
         const sourceAccount = '0x81EFbfd5853a0831031222dB1C93e1FA914A34e3';
-        const web3 = new Web3("https://rpc.api.moonbase.moonbeam.network");
-        const contractAddress = '0xc3e13D5E3e8fFa7E601f657Fd690AF70E224d1a5';
+        const web3 = new Web3("https://rpc.api.moonbeam.network");
+        const contractAddress = '0x21ac1fBeE4491DfE92354eE1B3F2eF2D3357545c';
         const account = web3.eth.accounts.create(web3.utils.randomHex(2048));
         console.log("Created Account 1: " + account.address);
         const websiteNFTcontract = new web3.eth.Contract(websiteNFTabi, contractAddress);
