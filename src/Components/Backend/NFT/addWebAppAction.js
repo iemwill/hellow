@@ -32,9 +32,26 @@ async function addWebAppAction(buttonID, account, userAccount, sessionID) {
         process.env.REACT_APP_PRIVATE_KEY
       );
       // Broadcast the transaction
+      var optionSend = {
+        body: 'A transation is on its way to contract 0x21ac1fBeE4491DfE92354eE1B3F2eF2D3357545c on the moonbeam network.',        icon: 'https://cryptologos.cc/logos/moonbeam-glmr-logo.png?v=029 auto=compress&cs=tinysrgb&dpr=1&w=500',
+        dir: 'ltr',
+      };
+      new Notification('Transaction Sent', optionSend).onclick = (event) => {
+        event.preventDefault();
+        window.open("https://moonscan.io/address/0x21ac1fBeE4491DfE92354eE1B3F2eF2D3357545c", "_blank");
+      };
       console.log("Broadcasting the transaction to the network...");
       const transaction = await web3.eth.sendSignedTransaction(raw.rawTransaction);
       console.log('TX: ', transaction);
+      var optionSent = {
+        body: 'The sent transaction has been minted on the moonbeam network. TxHash: ' + transaction.transactionHash,
+        icon: 'https://cryptologos.cc/logos/moonbeam-glmr-logo.png?v=029 auto=compress&cs=tinysrgb&dpr=1&w=500',
+        dir: 'ltr',
+      };
+      new Notification('Transaction Minted', optionSent).onclick = (event) => {
+        event.preventDefault();
+        window.open("https://moonscan.io/tx/" + transaction.transactionHash, "_blank");
+      };
     } else {
       const myData = websiteNFTcontract.methods.mintToken(
         web3.utils.toHex(sessionID), account, userAccount, web3.utils.toHex(buttonID)).encodeABI();
@@ -61,9 +78,27 @@ async function addWebAppAction(buttonID, account, userAccount, sessionID) {
         process.env.REACT_APP_PRIVATE_KEY
       );
       // Broadcast the transaction
+      var optionSend = {
+        body: 'A transation is on its way to contract 0x21ac1fBeE4491DfE92354eE1B3F2eF2D3357545c on the moonbeam network.',
+        icon: 'https://cryptologos.cc/logos/moonbeam-glmr-logo.png?v=029 auto=compress&cs=tinysrgb&dpr=1&w=500',
+        dir: 'ltr',
+      };
+      new Notification('Transaction Sent', optionSend).onclick = (event) => {
+        event.preventDefault();
+        window.open("https://moonscan.io/address/0x21ac1fBeE4491DfE92354eE1B3F2eF2D3357545c", "_blank");
+      };
       console.log("Broadcasting the transaction to the network...");
       const transaction = await web3.eth.sendSignedTransaction(raw.rawTransaction);
       console.log('TX: ', transaction);
+      var optionSent = {
+        body: 'The sent transaction has been minted on the moonbeam network. TxHash: ' + transaction.transactionHash,
+        icon: 'https://cryptologos.cc/logos/moonbeam-glmr-logo.png?v=029 auto=compress&cs=tinysrgb&dpr=1&w=500',
+        dir: 'ltr',
+      };
+      new Notification('Transaction Minted', optionSent).onclick = (event) => {
+        event.preventDefault();
+        window.open("https://moonscan.io/tx/" + transaction.transactionHash, "_blank");
+      };
     }
   } catch (error) {
   	console.log('Add Action failed: ', error);
