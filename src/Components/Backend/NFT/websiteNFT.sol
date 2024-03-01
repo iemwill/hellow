@@ -11,13 +11,17 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.2.0/contr
 
 
 /**
- * The websiteToken contract enables website-token-minting for https://laubenheimer.eu.
+ * The ebsiteToken contract enables website-token-minting for in this case https://laubenheimer.eu.
  */
 contract websiteToken is ERC20 {
   address public owner;
+  address public oldFungibleToken;
+  address public oldNonFungibleToken;
 
-  constructor() ERC20 ("WebsiteToken", "WT"){
+  constructor() ERC20 ("HelloWebsiteToken", "HWT"){
     owner = msg.sender;
+    oldFungibleToken = 0xD1841Ca7DDEf395979bDE3bdf46fc9a3b9d787b8;
+    oldNonFungibleToken = 0x21ac1fBeE4491DfE92354eE1B3F2eF2D3357545c;
     _mint(owner, 100 * 10 ** 18);
   }
   function mintToken(address to, uint256 amount) public virtual {
@@ -38,8 +42,8 @@ contract websiteNFT is ERC721URIStorage {
   uint256 public NFTsCount;
   mapping(uint256 => uint256) public NFTtoTokenMapping;
 
-  constructor() ERC721 ("Website NFT", "WNFT") {
-    owner = msg.sender;
+  constructor() ERC721 ("Hello Website NFT", "HWNFT") {
+    owner = 0xDE328FD211901daA74a15C461bfd97560E1DF6a5;
     theWebsiteToken = new websiteToken();
     _safeMint(owner, 0);
     NFTsCount = 1;
