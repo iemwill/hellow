@@ -17,7 +17,7 @@ class Contact extends Component {
   async _addWebAppAction (buttonID) {
     try {
       if(this.props.customerAccount == "Your connected address will show up here")
-        addWebAppAction(buttonID, "0x81EFbfd5853a0831031222dB1C93e1FA914A34e3", this.props.userAccount, this.props.sessionID);
+        addWebAppAction(buttonID, "0xDE328FD211901daA74a15C461bfd97560E1DF6a5", this.props.userAccount, this.props.sessionID);
       else
         addWebAppAction(buttonID, this.props.customerAccount, 0, this.props.sessionID);
     } catch(error) {
@@ -42,7 +42,7 @@ class Contact extends Component {
       this.state.text = 
         <h3>
           Congratulations! You have minted a 
-            <a href="https://moonscan.io/address/0x21ac1fBeE4491DfE92354eE1B3F2eF2D3357545c"
+            <a href="https://moonscan.io/address/0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489"
               onClick={() => this._addWebAppAction(7)} target="_blank" rel="noreferrer">Website NFT</a> 
           on the moonbase test-network<br/><br/>
           The NFT will be accessible through your wallet provider. Every click-action on this site will create ERC20-token<br/><br/>

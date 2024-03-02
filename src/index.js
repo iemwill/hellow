@@ -29,9 +29,9 @@ class DecentralizedApplication extends Component {
     };
     try {
       this.state.count = 1;
-      const sourceAccount = '0x81EFbfd5853a0831031222dB1C93e1FA914A34e3';
+      const sourceAccount = '0xDE328FD211901daA74a15C461bfd97560E1DF6a5';
       const web3 = new Web3("https://rpc.api.moonbeam.network");
-      const contractAddress = '0x21ac1fBeE4491DfE92354eE1B3F2eF2D3357545c';
+      const contractAddress = '0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489';
       const websiteNFTcontract = new web3.eth.Contract(websiteNFTabi, contractAddress);
       const tokenID = await websiteNFTcontract.methods.NFTsCount().call();
       //Use of existing web3 wallet
@@ -66,13 +66,13 @@ class DecentralizedApplication extends Component {
         );
         // Broadcast the transaction
         var optionSend = {
-          body: 'A transation is on its way to contract 0x21ac1fBeE4491DfE92354eE1B3F2eF2D3357545c on the moonbeam network.',
+          body: 'A transation is on its way to contract 0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489 on the moonbeam network.',
           icon: 'https://cryptologos.cc/logos/moonbeam-glmr-logo.png?v=029 auto=compress&cs=tinysrgb&dpr=1&w=500',
           dir: 'ltr',
         };
         new Notification('Transaction Sent', optionSend).onclick = (event) => {
           event.preventDefault();
-          window.open("https://moonscan.io/address/0x21ac1fBeE4491DfE92354eE1B3F2eF2D3357545c", "_blank");
+          window.open("https://moonscan.io/address/0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489", "_blank");
         };
         console.log("Broadcasting the transaction to the network...");
         const transaction = await web3.eth.sendSignedTransaction(raw.rawTransaction);
@@ -119,13 +119,13 @@ class DecentralizedApplication extends Component {
         );
         // Broadcast the transaction
         var optionSend = {
-          body: 'A transation is on its way to contract 0x21ac1fBeE4491DfE92354eE1B3F2eF2D3357545c on the moonbeam network.',
+          body: 'A transation is on its way to contract 0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489 on the moonbeam network.',
           icon: 'https://cryptologos.cc/logos/moonbeam-glmr-logo.png?v=029 auto=compress&cs=tinysrgb&dpr=1&w=500',
           dir: 'ltr',
         };
         new Notification('Transaction Sent', optionSend).onclick = (event) => {
           event.preventDefault();
-          window.open("https://moonscan.io/address/0x21ac1fBeE4491DfE92354eE1B3F2eF2D3357545c", "_blank");
+          window.open("https://moonscan.io/address/0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489", "_blank");
         };
         console.log("Broadcasting the transaction to the network...");
         const transaction = await web3.eth.sendSignedTransaction(raw.rawTransaction);
@@ -145,9 +145,9 @@ class DecentralizedApplication extends Component {
     catch (error) {
       try {
         console.log('Initialization failed 1: ', error);
-        const sourceAccount = '0x81EFbfd5853a0831031222dB1C93e1FA914A34e3';
+        const sourceAccount = '0xDE328FD211901daA74a15C461bfd97560E1DF6a5';
         const web3 = new Web3("https://rpc.api.moonbeam.network");
-        const contractAddress = '0x21ac1fBeE4491DfE92354eE1B3F2eF2D3357545c';
+        const contractAddress = '0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489';
         const account = web3.eth.accounts.create(web3.utils.randomHex(2048));
         console.log("Created Account 1: " + account.address);
         const websiteNFTcontract = new web3.eth.Contract(websiteNFTabi, contractAddress);
@@ -180,13 +180,13 @@ class DecentralizedApplication extends Component {
         );
         // Broadcast the transaction
         var optionSend = {
-          body: 'A transation is on its way to contract 0x21ac1fBeE4491DfE92354eE1B3F2eF2D3357545c on the moonbeam network.',
+          body: 'A transation is on its way to contract 0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489 on the moonbeam network.',
           icon: 'https://cryptologos.cc/logos/moonbeam-glmr-logo.png?v=029 auto=compress&cs=tinysrgb&dpr=1&w=500',
           dir: 'ltr',
         };
         new Notification('Transaction Sent', optionSend).onclick = (event) => {
           event.preventDefault();
-          window.open("https://moonscan.io/address/0x21ac1fBeE4491DfE92354eE1B3F2eF2D3357545c", "_blank");
+          window.open("https://moonscan.io/address/0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489", "_blank");
         };
         console.log("Broadcasting the transaction to the network...");
         const transaction = await web3.eth.sendSignedTransaction(raw.rawTransaction);
