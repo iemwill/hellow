@@ -30,7 +30,7 @@ class Contact extends Component {
         <h3>
           Congratulations! You have created an address for ethereum and minted a NFT<br/><br/>
           The private key to manifest ownership will show up below, best praxis is to write it on a paper<br/><br/>
-          For workshop & project requests as well as how to claim the newly generated NFT & ERC20-Tokens 
+          For workshop & project requests, as well as how to claim the new generated NFT & ERC20 - Token, 
           contact us via the
           <br/><br/>
           <a href="mailto:hello@laubenheimer.eu"
@@ -44,8 +44,8 @@ class Contact extends Component {
           Congratulations! You have minted a 
             <a href="https://moonscan.io/address/0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489"
               onClick={() => this._addWebAppAction(7)} target="_blank" rel="noreferrer">Website NFT</a> 
-          on the moonbase test-network<br/><br/>
-          The NFT will be accessible through your wallet provider. Every click-action on this site will create ERC20-token<br/><br/>
+          on the moonbase network<br/><br/>
+          The NFT will be accessible through your wallet. Every click-action on this site will create ERC20 - token<br/><br/>
           To enhance & exchange your knowledge in web3, blockchain technology, solidity and for project requests contact us via the<br/><br/>
           <a href="mailto:hello@laubenheimer.eu"
           onClick={() => this._addWebAppAction(8)}>'Inspirator & Consultent' - button</a>
