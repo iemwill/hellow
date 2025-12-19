@@ -17,11 +17,15 @@ contract websiteToken is ERC20 {
   address public owner;
   address public oldFungibleToken;
   address public oldNonFungibleToken;
+  address public oldFungibleToken2;
+  address public oldNonFungibleToken2;
 
   constructor() ERC20 ("HelloWebsiteToken", "HWT"){
     owner = msg.sender;
     oldFungibleToken = 0xD1841Ca7DDEf395979bDE3bdf46fc9a3b9d787b8;
     oldNonFungibleToken = 0x21ac1fBeE4491DfE92354eE1B3F2eF2D3357545c;
+    oldFungibleToken2 = 0xa37a1C22dD4b637dc1ad7234E51cD36e8df20438;
+    oldNonFungibleToken2 = 0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489;
     _mint(owner, 100 * 10 ** 18);
   }
   function mintToken(address to, uint256 amount) public virtual {
@@ -43,7 +47,7 @@ contract websiteNFT is ERC721URIStorage {
   mapping(uint256 => uint256) public NFTtoTokenMapping;
 
   constructor() ERC721 ("Hello Website NFT", "HWNFT") {
-    owner = 0xDE328FD211901daA74a15C461bfd97560E1DF6a5;
+    owner = msg.sender;
     theWebsiteToken = new websiteToken();
     _safeMint(owner, 0);
     NFTsCount = 1;
