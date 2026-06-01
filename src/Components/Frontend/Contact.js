@@ -62,12 +62,8 @@ class Contact extends Component {
           <h2>Analyze | Consult | Design | Develop | Educate </h2>
           <a href="https://wa.me/message/AAIDX7NDPAJ3J1" target="_blank" rel="noreferrer"
             onClick={() => this._addWebAppAction(1)}><FaWhatsapp/></a>
-          <a href="https://twitter.com/iem_wll" target="_blank" rel="noreferrer"
-            onClick={() => this._addWebAppAction(2)}><FaTwitter/></a>
           <a href="https://github.com/iemwill" target="_blank" rel="noreferrer"
             onClick={() => this._addWebAppAction(3)}><FaGithub/></a>
-          <a href="https://t.me/iemwill" target="_blank" rel="noreferrer"
-            onClick={() => this._addWebAppAction(4)}><FaTelegram/></a>
           <a href="https://linkedin.com/in/w-ll" target="_blank" rel="noreferrer"
             onClick={() => this._addWebAppAction(5)}><FaLinkedin/></a>
         </div>
