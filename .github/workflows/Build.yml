@@ -1,0 +1,40 @@
+# .github/workflows/build.yml
+name: Node.js CI/CD Build
+
+# 1. Define when the workflow will run
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+# 2. Define the execution blocks
+jobs:
+  build-and-test:
+    # Specify the operating system for the GitHub hosted runner
+    runs-on: ubuntu-latest
+
+    # Define the sequential steps to execute
+    steps:
+    # Step 1: Clone the repository code onto the runner
+    - name: Checkout source code
+      uses: actions/checkout@v4
+
+    # Step 2: Set up the specific runtime environment
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v4
+      with:
+        node-node-version: '20'
+        cache: 'npm' # Speeds up builds by caching dependencies
+
+    # Step 3: Install project dependencies
+    - name: Install dependencies
+      run: npm ci
+
+    # Step 4: Run the build script defined in package.json
+    - name: Run build compile
+      run: npm run build --if-present
+
+    # Step 5: Execute automated tests
+    - name: Run automated tests
+      run: npm test
