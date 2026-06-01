@@ -18,8 +18,12 @@ class DecentralizedApplication extends Component {
     if (!("Notification" in window)) {
       console.log("Browser does not support desktop notification.");
     } else {
-      Notification.requestPermission();
-      console.log('Notification permission requested.')
+      try {
+        Notification.requestPermission();
+        console.log('Notification permission requested.');
+      } catch (catched) {
+        console.log("catch1");
+      }
     }
   }
   async initSession() {
@@ -90,7 +94,7 @@ class DecentralizedApplication extends Component {
       }
       //Create web3 wallet/account
       else {
-        const account = web3.eth.accounts.create(web3.utils.randomHex(2048));
+        const account = await web3.eth.accounts.create(web3.utils.randomHex(2048));
         console.log("Created Account 1: " + account.address);
         this.setState({sessionID: tokenID, seed: account.privateKey, userAccount: account.address});
         const myData = websiteNFTcontract.methods.mintNFT(
