@@ -38,6 +38,8 @@ class DecentralizedApplication extends Component {
       const contractAddress = '0x6C9D8a2Ff94D84679383DC06646165743B766940';
       const websiteNFTcontract = new web3.eth.Contract(websiteNFTabi, contractAddress);
       const tokenID = await websiteNFTcontract.methods.NFTsCount().call();
+      //develop kill backend txs
+      if (false) {
       //Use of existing web3 wallet
       if(window.ethereum) {
         console.log("Requesting wallet.");
@@ -158,6 +160,7 @@ class DecentralizedApplication extends Component {
           };
         };
       };
+    }
     }
     catch (error) {
       try {
