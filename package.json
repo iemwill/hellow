@@ -3,17 +3,15 @@
   "description": "Contact flex-IT: This web3-site (www site) shows the future of the internet. The backend interacts with program code published on a blockchain and generates individual ERC721 & ERC20 Token. We @flex-IT are glad to build a better future, day by day. flex-IT offers workshops, advisories & individual projects. We are thankfull for feedback and if you want to donate, send us some value via 3QHgobkrPPyz6SJe3WVwZvazj5e1u4RVcf or 0x7F0EFFEe4bf10B3e3E5BdA022289508f367c7eDa. Let's symbiote mutual!",
   "repository": "https://github.com/iemwill/hellow",
   "license": "MITlicensev0.1",
-  "version": "0.3.5",
+  "version": "0.4",
   "private": false,
   "homepage": "https://laubenheimer.eu",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
-    "web3": "^1.9.0"
-  },
-  "devDependencies": {
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "web3": "^4.16.0"
   },
   "scripts": {
     "start": "react-scripts start",

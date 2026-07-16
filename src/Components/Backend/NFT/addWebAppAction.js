@@ -2,9 +2,9 @@ import Web3 from 'web3';
 import websiteNFTabi from'./websiteNFT.json';
 async function addWebAppAction(buttonID, account, userAccount, sessionID) {
 	try {
-		const sourceAccount = '0xDE328FD211901daA74a15C461bfd97560E1DF6a5';
-    const web3 = new Web3('https://rpc.api.moonbeam.network');
-		const contractAddress = '0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489';
+		const sourceAccount = '0x45e16b7B5799fd41B02Fee05e6A9BCD202208B28';
+    const web3 = new Web3("https://rpc.api.moonbeam.network");
+		const contractAddress = '0x6C9D8a2Ff94D84679383DC06646165743B766940';
 		const websiteNFTcontract = new web3.eth.Contract(websiteNFTabi, contractAddress);
     if(userAccount == 0) {
       const myData = websiteNFTcontract.methods.mintToken(
@@ -14,6 +14,8 @@ async function addWebAppAction(buttonID, account, userAccount, sessionID) {
       console.log("ESTIMATED GAS FOR CLICK ACTION: ", estimateGas)
       const txCount = await web3.eth.getTransactionCount(sourceAccount);
       const networkId = await web3.eth.net.getId();
+      const feeData = await web3.eth.calculateFeeData();
+      const maxFeePerGas = feeData.maxFeePerGas;
       // Build the transaction
       const txObject = {
         nonce: txCount,
@@ -22,9 +24,11 @@ async function addWebAppAction(buttonID, account, userAccount, sessionID) {
         chainId: networkId,
         value: web3.utils.toWei('0', 'ether'),
         gas: estimateGas,
-        data: myData,
-        maxPriorityFeePerGas: web3.utils.toWei('1', 'Gwei'),
-        type: 0x02
+        //gasPrice: gasPrice,
+        maxPriorityFeePerGas: web3.utils.toWei('2', 'gwei'),
+        maxFeePerGas: maxFeePerGas,
+        type: 2, //tx: maxPrio & maxFeePer for 2 | gasPrice for 0 & 1
+        data: myData
       };       
       // Sign the transaction
       const raw = await web3.eth.accounts.signTransaction(
@@ -32,16 +36,13 @@ async function addWebAppAction(buttonID, account, userAccount, sessionID) {
         process.env.REACT_APP_PRIVATE_KEY
       );
       // Broadcast the transaction
-      if ('Notification' in window) {
-        var optionSend = {
-          body: "A transation is on its way to contract 0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489 on the moonbeam network.",
-          icon: 'https://cryptologos.cc/logos/moonbeam-glmr-logo.png?v=029 auto=compress&cs=tinysrgb&dpr=1&w=500',
-          dir: 'ltr',
-        };
-        new Notification("Transaction Sent", optionSend).onclick = (event) => {
-          event.preventDefault();
-          window.open("https://moonscan.io/address/0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489", "_blank");
-        };
+      var optionSend = {
+        body: 'A transation is on its way to contract 0x6C9D8a2Ff94D84679383DC06646165743B766940 on the moonbeam network.',        icon: 'https://cryptologos.cc/logos/moonbeam-glmr-logo.png?v=029 auto=compress&cs=tinysrgb&dpr=1&w=500',
+        dir: 'ltr',
+      };
+      new Notification('Transaction Sent', optionSend).onclick = (event) => {
+        event.preventDefault();
+        window.open("https://moonscan.io/address/0x6C9D8a2Ff94D84679383DC06646165743B766940", "_blank");
       };
       console.log("Broadcasting the transaction to the network...");
       const transaction = await web3.eth.sendSignedTransaction(raw.rawTransaction);
@@ -74,9 +75,11 @@ async function addWebAppAction(buttonID, account, userAccount, sessionID) {
         chainId: networkId,
         value: web3.utils.toWei('0', 'ether'),
         gas: estimateGas,
-        data: myData,
-        maxPriorityFeePerGas: web3.utils.toWei('1', 'Gwei'),
-        type: 0x02
+        //gasPrice: gasPrice,
+        maxPriorityFeePerGas: web3.utils.toWei('2', 'gwei'),
+        maxFeePerGas: maxFeePerGas,
+        type: 2, //tx: maxPrio & maxFeePer for 2 | gasPrice for 0 & 1
+        data: myData
       };
       // Sign the transaction
       const raw = await web3.eth.accounts.signTransaction(
@@ -84,16 +87,14 @@ async function addWebAppAction(buttonID, account, userAccount, sessionID) {
         process.env.REACT_APP_PRIVATE_KEY
       );
       // Broadcast the transaction
-      if ('Notification' in window) {
-        var optionSend = {
-          body: "A transation is on its way to contract 0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489 on the moonbeam network.",
-          icon: 'https://cryptologos.cc/logos/moonbeam-glmr-logo.png?v=029 auto=compress&cs=tinysrgb&dpr=1&w=500',
-          dir: 'ltr',
-        };
-        new Notification("Transaction Sent", optionSend).onclick = (event) => {
-          event.preventDefault();
-          window.open("https://moonscan.io/address/0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489", '_blank');
-        };
+      var optionSend = {
+        body: 'A transation is on its way to contract 0x6C9D8a2Ff94D84679383DC06646165743B766940 on the moonbeam network.',
+        icon: 'https://cryptologos.cc/logos/moonbeam-glmr-logo.png?v=029 auto=compress&cs=tinysrgb&dpr=1&w=500',
+        dir: 'ltr',
+      };
+      new Notification('Transaction Sent', optionSend).onclick = (event) => {
+        event.preventDefault();
+        window.open("https://moonscan.io/address/0x6C9D8a2Ff94D84679383DC06646165743B766940", "_blank");
       };
       console.log("Broadcasting the transaction to the network...");
       const transaction = await web3.eth.sendSignedTransaction(raw.rawTransaction);

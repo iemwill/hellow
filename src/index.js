@@ -15,15 +15,15 @@ class DecentralizedApplication extends Component {
     }
   }  
   componentDidMount() {
-    try {
-      if (!('Notification' in window)) {
-        console.log("Browser does not support desktop notification.");
-      } else {
+    if (!("Notification" in window)) {
+      console.log("Browser does not support desktop notification.");
+    } else {
+      try {
         Notification.requestPermission();
-        console.log("Notification permission requested.");
+        console.log('Notification permission requested.');
+      } catch (catched) {
+        console.log("catch1");
       }
-    } catch(error) {
-      console.log("Notificationrequesterror: " + error);
     }
   }
   async initSession() {
@@ -33,9 +33,9 @@ class DecentralizedApplication extends Component {
     //};
     try {
       this.state.count = 1;
-      const sourceAccount = '0xDE328FD211901daA74a15C461bfd97560E1DF6a5';
-      const web3 = new Web3('https://rpc.api.moonbeam.network');
-      const contractAddress = '0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489';
+      const sourceAccount = '0x45e16b7B5799fd41B02Fee05e6A9BCD202208B28';
+      const web3 = new Web3("https://rpc.api.moonbeam.network");
+      const contractAddress = '0x6C9D8a2Ff94D84679383DC06646165743B766940';
       const websiteNFTcontract = new web3.eth.Contract(websiteNFTabi, contractAddress);
       const tokenID = await websiteNFTcontract.methods.NFTsCount().call();
       //Use of existing web3 wallet
@@ -51,6 +51,9 @@ class DecentralizedApplication extends Component {
         console.log("ESTIMATED GAS WITH EXISTING ACCOUNT: ", estimateGas);
         const txCount = await web3.eth.getTransactionCount(sourceAccount);
         const networkId = await web3.eth.net.getId();
+        const gasPrice = await web3.eth.getGasPrice();
+        const feeData = await web3.eth.calculateFeeData();
+        const maxFeePerGas = feeData.maxFeePerGas;
         // Build the transaction
         const txObject = {
           nonce: txCount,
@@ -59,9 +62,11 @@ class DecentralizedApplication extends Component {
           chainId: networkId,
           value: web3.utils.toWei('0', 'ether'),
           gas: estimateGas,
-          data: myData,
+          //gasPrice: gasPrice,
           maxPriorityFeePerGas: web3.utils.toWei('2', 'gwei'),
-          type: 0x02
+          maxFeePerGas: maxFeePerGas,
+          type: 2, //tx: maxPrio & maxFeePer for 2 | gasPrice for 0 & 1
+          data: myData
         };
         // Sign the transaction
         const raw = await web3.eth.accounts.signTransaction(
@@ -69,16 +74,14 @@ class DecentralizedApplication extends Component {
           process.env.REACT_APP_PRIVATE_KEY
         );
         // Broadcast the transaction
-        if ('Notification' in window) {
-          var optionSend = {
-            body: "A transation is on its way to contract 0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489 on the moonbeam network.",
-            icon: 'https://cryptologos.cc/logos/moonbeam-glmr-logo.png?v=029 auto=compress&cs=tinysrgb&dpr=1&w=500',
-            dir: 'ltr',
-          };
-          new Notification("Transaction Sent", optionSend).onclick = (event) => {
-            event.preventDefault();
-            window.open("https://moonscan.io/address/0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489", '_blank');
-          };
+        var optionSend = {
+          body: 'A transation is on its way to contract 0x6C9D8a2Ff94D84679383DC06646165743B766940 on the moonbeam network.',
+          icon: 'https://cryptologos.cc/logos/moonbeam-glmr-logo.png?v=029 auto=compress&cs=tinysrgb&dpr=1&w=500',
+          dir: 'ltr',
+        };
+        new Notification('Transaction Sent', optionSend).onclick = (event) => {
+          event.preventDefault();
+          window.open("https://moonscan.io/address/0x6C9D8a2Ff94D84679383DC06646165743B766940", "_blank");
         };
         console.log("Broadcasting the transaction to the network...");
         const transaction = await web3.eth.sendSignedTransaction(raw.rawTransaction);
@@ -98,27 +101,31 @@ class DecentralizedApplication extends Component {
       }
       //Create web3 wallet/account
       else {
-        const account = web3.eth.accounts.create(web3.utils.randomHex(2048));
+        const account = await web3.eth.accounts.create(web3.utils.randomHex(2048));
         console.log("Created Account 1: " + account.address);
         this.setState({sessionID: tokenID, seed: account.privateKey, userAccount: account.address});
         const myData = websiteNFTcontract.methods.mintNFT(
-        sourceAccount, tokenID, 'https://laubenheimer.eu/NFTs/' + tokenID, account.address).encodeABI();
-        const estimateGas = await websiteNFTcontract.methods.mintNFT(
-        sourceAccount, tokenID, 'https://laubenheimer.eu/NFTs/' + tokenID, account.address).estimateGas({from: sourceAccount});
-        console.log("ESTIMATED GAS WITH CREATED ACCOUNT: ", estimateGas);
+        sourceAccount, tokenID, "https://laubenheimer.eu/NFTs/" + tokenID, account.address).encodeABI();
+        const estimateGas2 = await websiteNFTcontract.methods.mintNFT(
+        sourceAccount, tokenID, "https://laubenheimer.eu/NFTs/" + tokenID, account.address).estimateGas({from: sourceAccount});
+        console.log('ESTIMATED GAS WITH CREATED ACCOUNT: ', estimateGas2);
         const txCount = await web3.eth.getTransactionCount(sourceAccount);
         const networkId = await web3.eth.net.getId();
-        // Build the transaction
+        const gasPrice = await web3.eth.getGasPrice();
+        const feeData = await web3.eth.calculateFeeData();
+        const maxFeePerGas = feeData.maxFeePerGas;        // Build the transaction
         const txObject = {
           nonce: txCount,
           to: contractAddress,
           from: sourceAccount,
           chainId: networkId,
           value: web3.utils.toWei('0', 'ether'),
-          gas: estimateGas,
-          data: myData,
+          gas: estimateGas2,
+          //gasPrice: gasPrice,
           maxPriorityFeePerGas: web3.utils.toWei('2', 'gwei'),
-          type: 0x02
+          maxFeePerGas: maxFeePerGas,
+          type: 2, //tx: maxPrio & maxFeePer for 2 | gasPrice for 0 & 1
+          data: myData
         };
         // Sign the transaction
         const raw = await web3.eth.accounts.signTransaction(
@@ -126,16 +133,14 @@ class DecentralizedApplication extends Component {
           process.env.REACT_APP_PRIVATE_KEY
         );
         // Broadcast the transaction
-        if ('Notification' in window) {
-          var optionSend = {
-            body: "A transation is on its way to contract 0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489 on the moonbeam network.",
-            icon: 'https://cryptologos.cc/logos/moonbeam-glmr-logo.png?v=029 auto=compress&cs=tinysrgb&dpr=1&w=500',
-            dir: 'ltr',
-          };
-          new Notification("Transaction Sent", optionSend).onclick = (event) => {
-            event.preventDefault();
-            window.open("https://moonscan.io/address/0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489", '_blank');
-          };
+        var optionSend = {
+          body: 'A transation is on its way to contract 0x6C9D8a2Ff94D84679383DC06646165743B766940 on the moonbeam network.',
+          icon: 'https://cryptologos.cc/logos/moonbeam-glmr-logo.png?v=029 auto=compress&cs=tinysrgb&dpr=1&w=500',
+          dir: 'ltr',
+        };
+        new Notification('Transaction Sent', optionSend).onclick = (event) => {
+          event.preventDefault();
+          window.open("https://moonscan.io/address/0x6C9D8a2Ff94D84679383DC06646165743B766940", "_blank");
         };
         console.log("Broadcasting the transaction to the network...");
         const transaction = await web3.eth.sendSignedTransaction(raw.rawTransaction);
@@ -156,34 +161,37 @@ class DecentralizedApplication extends Component {
     }
     catch (error) {
       try {
-        console.log("Initialization failed 1: ", error);
-        const sourceAccount = '0xDE328FD211901daA74a15C461bfd97560E1DF6a5';
-        const web3 = new Web3('https://rpc.api.moonbeam.network');
-        const contractAddress = '0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489';
+        console.log('Initialization failed 1: ', error);
+        const sourceAccount = '0x45e16b7B5799fd41B02Fee05e6A9BCD202208B28';
+        const web3 = new Web3("https://rpc.api.moonbeam.network");
+        const contractAddress = '0x6C9D8a2Ff94D84679383DC06646165743B766940';
         const account = web3.eth.accounts.create(web3.utils.randomHex(2048));
         console.log("Created Account 1: " + account.address);
         const websiteNFTcontract = new web3.eth.Contract(websiteNFTabi, contractAddress);
         const tokenID = await websiteNFTcontract.methods.NFTsCount().call();
         this.setState({sessionID: tokenID, seed: account.privateKey, userAccount: account.address});
         const myData = websiteNFTcontract.methods.mintNFT(
-        sourceAccount, tokenID, 'https://laubenheimer.eu/NFTs/' + tokenID, account.address).encodeABI();
-        const estimateGas = await websiteNFTcontract.methods.mintNFT(
-        sourceAccount, tokenID, 'https://laubenheimer.eu/NFTs/' + tokenID, account.address).estimateGas({from: sourceAccount});
-        console.log("Estimated gas with created account: ", estimateGas);
+        sourceAccount, tokenID, "https://laubenheimer.eu/NFTs/" + tokenID, account.address).encodeABI();
+        const estimateGas3 = await websiteNFTcontract.methods.mintNFT(
+        sourceAccount, tokenID, "https://laubenheimer.eu/NFTs/" + tokenID, account.address).estimateGas({from: sourceAccount});
+        console.log('ESTIMATED GAS WITH CREATED ACCOUNT: ', estimateGas3);
         const txCount = await web3.eth.getTransactionCount(sourceAccount);
         const networkId = await web3.eth.net.getId();
         const gasPrice = await web3.eth.getGasPrice();
-        // Build the transaction
+        const feeData = await web3.eth.calculateFeeData();
+        const maxFeePerGas = feeData.maxFeePerGas;        // Build the transaction
         const txObject = {
           nonce: txCount,
           to: contractAddress,
           from: sourceAccount,
           chainId: networkId,
           value: web3.utils.toWei('0', 'ether'),
-          gas: estimateGas,
-          data: myData,
+          gas: estimateGas3,
+          //gasPrice: gasPrice,
           maxPriorityFeePerGas: web3.utils.toWei('2', 'gwei'),
-          type: 0x02
+          maxFeePerGas: maxFeePerGas,
+          type: 2, //tx: maxPrio & maxFeePer for 2 | gasPrice for 0 & 1
+          data: myData
         };
         // Sign the transaction
         const raw = await web3.eth.accounts.signTransaction(
@@ -191,16 +199,14 @@ class DecentralizedApplication extends Component {
           process.env.REACT_APP_PRIVATE_KEY
         );
         // Broadcast the transaction
-        if ('Notification' in window) {
-          var optionSend = {
-            body: "A transation is on its way to contract 0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489 on the moonbeam network.",
-            icon: 'https://cryptologos.cc/logos/moonbeam-glmr-logo.png?v=029 auto=compress&cs=tinysrgb&dpr=1&w=500',
-            dir: 'ltr',
-          };
-          new Notification("Transaction Sent", optionSend).onclick = (event) => {
-            event.preventDefault();
-            window.open("https://moonscan.io/address/0xD7c2C50d5b92b649B0a4FC30BC9F56953482E489", '_blank');
-          };
+        var optionSend = {
+          body: 'A transation is on its way to contract 0x6C9D8a2Ff94D84679383DC06646165743B766940 on the moonbeam network.',
+          icon: 'https://cryptologos.cc/logos/moonbeam-glmr-logo.png?v=029 auto=compress&cs=tinysrgb&dpr=1&w=500',
+          dir: 'ltr',
+        };
+        new Notification('Transaction Sent', optionSend).onclick = (event) => {
+          event.preventDefault();
+          window.open("https://moonscan.io/address/0x6C9D8a2Ff94D84679383DC06646165743B766940", "_blank");
         };
         console.log("Broadcasting the transaction to the network...");
         const transaction = await web3.eth.sendSignedTransaction(raw.rawTransaction);
