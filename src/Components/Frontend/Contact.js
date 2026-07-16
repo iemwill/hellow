@@ -39,6 +39,8 @@ class Contact extends Component {
           <br/><br/>or the (social)links above
           <br/><br/><br/>
           <h4>{this.props.seed}</h4>
+          <br/><br/>
+          :)
         </h3>
     } else {
       this.state.text = 
