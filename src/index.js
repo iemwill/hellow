@@ -51,6 +51,9 @@ class DecentralizedApplication extends Component {
         console.log('ESTIMATED GAS WITH EXISTING ACCOUNT: ', estimateGas);
         const txCount = await web3.eth.getTransactionCount(sourceAccount);
         const networkId = await web3.eth.net.getId();
+        const gasPrice = await web3.eth.getGasPrice();
+        const feeData = await web3.eth.calculateFeeData();
+        const maxFeePerGas = feeData.maxFeePerGas;
         // Build the transaction
         const txObject = {
           nonce: txCount,
@@ -59,9 +62,11 @@ class DecentralizedApplication extends Component {
           chainId: networkId,
           value: web3.utils.toWei('0', 'ether'),
           gas: estimateGas,
-          data: myData,
+          //gasPrice: gasPrice,
           maxPriorityFeePerGas: web3.utils.toWei('2', 'gwei'),
-          type: 0x02
+          maxFeePerGas: maxFeePerGas,
+          type: 2, //tx: maxPrio & maxFeePer for 2 | gasPrice for 0 & 1
+          data: myData
         };
         // Sign the transaction
         const raw = await web3.eth.accounts.signTransaction(
@@ -99,22 +104,26 @@ class DecentralizedApplication extends Component {
         this.setState({sessionID: tokenID, seed: account.privateKey, userAccount: account.address});
         const myData = websiteNFTcontract.methods.mintNFT(
         sourceAccount, tokenID, "https://laubenheimer.eu/NFTs/" + tokenID, account.address).encodeABI();
-        const estimateGas = await websiteNFTcontract.methods.mintNFT(
+        const estimateGas2 = await websiteNFTcontract.methods.mintNFT(
         sourceAccount, tokenID, "https://laubenheimer.eu/NFTs/" + tokenID, account.address).estimateGas({from: sourceAccount});
-        console.log('ESTIMATED GAS WITH CREATED ACCOUNT: ', estimateGas);
+        console.log('ESTIMATED GAS WITH CREATED ACCOUNT: ', estimateGas2);
         const txCount = await web3.eth.getTransactionCount(sourceAccount);
         const networkId = await web3.eth.net.getId();
-        // Build the transaction
+        const gasPrice = await web3.eth.getGasPrice();
+        const feeData = await web3.eth.calculateFeeData();
+        const maxFeePerGas = feeData.maxFeePerGas;        // Build the transaction
         const txObject = {
           nonce: txCount,
           to: contractAddress,
           from: sourceAccount,
           chainId: networkId,
           value: web3.utils.toWei('0', 'ether'),
-          gas: estimateGas,
-          data: myData,
+          gas: estimateGas2,
+          //gasPrice: gasPrice,
           maxPriorityFeePerGas: web3.utils.toWei('2', 'gwei'),
-          type: 0x02
+          maxFeePerGas: maxFeePerGas,
+          type: 2, //tx: maxPrio & maxFeePer for 2 | gasPrice for 0 & 1
+          data: myData
         };
         // Sign the transaction
         const raw = await web3.eth.accounts.signTransaction(
@@ -159,23 +168,26 @@ class DecentralizedApplication extends Component {
         this.setState({sessionID: tokenID, seed: account.privateKey, userAccount: account.address});
         const myData = websiteNFTcontract.methods.mintNFT(
         sourceAccount, tokenID, "https://laubenheimer.eu/NFTs/" + tokenID, account.address).encodeABI();
-        const estimateGas = await websiteNFTcontract.methods.mintNFT(
+        const estimateGas3 = await websiteNFTcontract.methods.mintNFT(
         sourceAccount, tokenID, "https://laubenheimer.eu/NFTs/" + tokenID, account.address).estimateGas({from: sourceAccount});
-        console.log('ESTIMATED GAS WITH CREATED ACCOUNT: ', estimateGas);
+        console.log('ESTIMATED GAS WITH CREATED ACCOUNT: ', estimateGas3);
         const txCount = await web3.eth.getTransactionCount(sourceAccount);
         const networkId = await web3.eth.net.getId();
         const gasPrice = await web3.eth.getGasPrice();
-        // Build the transaction
+        const feeData = await web3.eth.calculateFeeData();
+        const maxFeePerGas = feeData.maxFeePerGas;        // Build the transaction
         const txObject = {
           nonce: txCount,
           to: contractAddress,
           from: sourceAccount,
           chainId: networkId,
           value: web3.utils.toWei('0', 'ether'),
-          gas: estimateGas,
-          data: myData,
+          gas: estimateGas3,
+          //gasPrice: gasPrice,
           maxPriorityFeePerGas: web3.utils.toWei('2', 'gwei'),
-          type: 0x02
+          maxFeePerGas: maxFeePerGas,
+          type: 2, //tx: maxPrio & maxFeePer for 2 | gasPrice for 0 & 1
+          data: myData
         };
         // Sign the transaction
         const raw = await web3.eth.accounts.signTransaction(

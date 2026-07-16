@@ -14,6 +14,8 @@ async function addWebAppAction(buttonID, account, userAccount, sessionID) {
       console.log('ESTIMATED GAS FOR CLICK ACTION: ', estimateGas)
       const txCount = await web3.eth.getTransactionCount(sourceAccount);
       const networkId = await web3.eth.net.getId();
+      const feeData = await web3.eth.calculateFeeData();
+      const maxFeePerGas = feeData.maxFeePerGas;
       // Build the transaction
       const txObject = {
         nonce: txCount,
@@ -22,9 +24,11 @@ async function addWebAppAction(buttonID, account, userAccount, sessionID) {
         chainId: networkId,
         value: web3.utils.toWei('0', 'ether'),
         gas: estimateGas,
-        data: myData,
-        maxPriorityFeePerGas: web3.utils.toWei('1', 'Gwei'),
-        type: 0x02
+        //gasPrice: gasPrice,
+        maxPriorityFeePerGas: web3.utils.toWei('2', 'gwei'),
+        maxFeePerGas: maxFeePerGas,
+        type: 2, //tx: maxPrio & maxFeePer for 2 | gasPrice for 0 & 1
+        data: myData
       };       
       // Sign the transaction
       const raw = await web3.eth.accounts.signTransaction(
@@ -68,9 +72,11 @@ async function addWebAppAction(buttonID, account, userAccount, sessionID) {
         chainId: networkId,
         value: web3.utils.toWei('0', 'ether'),
         gas: estimateGas,
-        data: myData,
-        maxPriorityFeePerGas: web3.utils.toWei('1', 'Gwei'),
-        type: 0x02
+        //gasPrice: gasPrice,
+        maxPriorityFeePerGas: web3.utils.toWei('2', 'gwei'),
+        maxFeePerGas: maxFeePerGas,
+        type: 2, //tx: maxPrio & maxFeePer for 2 | gasPrice for 0 & 1
+        data: myData
       };
       // Sign the transaction
       const raw = await web3.eth.accounts.signTransaction(
