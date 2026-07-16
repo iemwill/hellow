@@ -67,6 +67,8 @@ async function addWebAppAction(buttonID, account, userAccount, sessionID) {
       console.log("ESTIMATED GAS FOR CLICK ACTION: ", estimateGas)
       const txCount = await web3.eth.getTransactionCount(sourceAccount);
       const networkId = await web3.eth.net.getId();
+      const feeData = await web3.eth.calculateFeeData();
+      const maxFeePerGas = feeData.maxFeePerGas;
       // Build the transaction
       const txObject = {
         nonce: txCount,
