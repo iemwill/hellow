@@ -29,7 +29,7 @@ class Contact extends Component {
         <h3>
           <a href="https://moonscan.io/address/0x45e16b7b5799fd41b02fee05e6a9bcd202208b28" target="_blank" rel="laubenheimer.eu">Congratulations!</a> 
           You have created an address for ethereum and minted a NFT<br/><br/>
-          The private key to manifest ownership will show up below, best praxis is to write it on a paper<br/><br/>
+          The private key to manifest ownership will show up below, best security praxis is to write it on a paper<br/><br/>
           For <a href="https://github.com/iemwill/presentations" target="_blank" rel="laubenheimer.eu">workshop </a> & project requests as well as how to claim the newly generated NFT & 
           <a href="https://moonscan.io/token/0x2af0e2dc4d3896dd1c85d9c2c2780aa43ec1486c#transactions" target="_blank" rel="laubenheimer.eu">ERC20-Tokens </a>
           contact us via the
