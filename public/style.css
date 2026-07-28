@@ -42,6 +42,11 @@ body button:hover {
   margin-left: 10px;
   margin-right: 10px;
 }
+#posts {
+  border: none;
+  width: 100%;
+  height: 500px;
+}
 @media (max-width: 600px) {
   #contact {
    text-align: center;

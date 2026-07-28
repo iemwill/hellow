@@ -80,6 +80,14 @@ class Contact extends Component {
         <div id="text">
           {this.state.text}
         </div>
+        <div id="posts">
+          <iframe
+            url="https://www.linkedin.com/embed/feed/update/urn:li:share:7487531548540538880" 
+            height="230" 
+            width="504" 
+            display="block"
+          ></iframe>
+        </div>
       </section>
     );
   }
